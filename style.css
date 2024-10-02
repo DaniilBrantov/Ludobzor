@@ -1,0 +1,38 @@
+/* Подключение шрифта */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 200;
+  src: url('assets/fonts/sf-pro/stylesheet.css');
+}
+/* Colors */
+:root {
+  --white: #FAFFFD;
+
+}
+
+/* Global Styles */
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  margin: 0;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 200;
+  margin: 0;
+  scroll-behavior: smooth;
+  min-width: 320px;
+  overflow-x: hidden;
+}
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+
+
