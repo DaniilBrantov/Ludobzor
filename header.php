@@ -29,22 +29,22 @@ $main = "/";
 $logoMain = get_template_directory_uri() . "/assets/images/logo.svg";
 $logoMobile = get_template_directory_uri() . "/assets/images/logo_footer_white_2.svg";
 $searchAction = "/poisk/";
-$reviewCasino = "/ludobzor/wordpress/obzor-casino/" ;
-$reviewSlots = "/obzory/obzor-slotov/";
-$reviewStreamers = "/obzory/obzor-strimerov/";
-$cryptoCasino = "/casino/";
-$blacklistCasino = "/obzory/blacklist/";
-$landCasinos = "/nazemnye-kazino/";
-$ratingCasino = "/reiting-kazino/";
-$bonuses = "/bonusy/";
-$bookmakers = "/bookmakers/";
-$bibi = "/bibi/";
-$news = "/news/";
-$freeGames = "/freegames/";
-$providers = "/providers/";
+$reviewCasino = "obzor-casino/";
+$reviewSlots = "obzor-slotov/";
+$reviewStreamers = "obzor-strimerov/";
+$cryptoCasino = "casino/";
+$blacklistCasino = "blacklist/";
+$landCasinos = "nazemnye-kazino/";
+$ratingCasino = "reyting-kazino/";
+$bonuses = "bonusy/";
+$bookmakers = "bookmakers/";
+$bibi = "bibi";
+$news = "news/";
+$freeGames = "freegames/";
+$providers = "providers/";
 $partners = "/partneram/";
 $aboutUs = "/about-us/";
-$partnerPrograms = "/partnyerki/";
+$partnerPrograms = "partnyorki/";
 $responsibleGaming = "/otvetstvennaya-igra/";
 $faq = "/f-a-q/";
 $contacts = "/contacts/";
@@ -55,19 +55,9 @@ $paymentSystems = "/payment_systems/";
     <div class="container">
         <div class="row">
             <div class="col-md-12 fullheader">
-                <a href="/" class="logo_ludobzor">
+                <a href="<?= $main; ?>" class="logo_ludobzor">
                     <img src="<?= $logoMain; ?>" alt="ludobzor.ru">
                 </a>
-                <!-- <nav>
-                    <?php
-                    //     wp_nav_menu( array(
-                    //         'theme_location' => 'Header Menu',
-                    //         'container'      => false,
-                    //         'menu_class'     => 'nav navbar-nav',
-                    //         'items_wrap'     => '<ul itemscope itemtype="%1$s" class="%2$s">%3$s</ul>',
-                    // ) );
-                    ?>
-                </nav> -->
 
                 <nav>
                     <ul itemscope itemtype="<?= $ulItemtype; ?>" class="nav navbar-nav">

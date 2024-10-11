@@ -1,6 +1,6 @@
 <?php
 
-// Получение провайдеров
+// Получение постов
 $post_types_query = [];
 foreach ($params['post_type_args'] as $post_type) {
     $post_types_query[$post_type['data-r']] = new WP_Query([
@@ -68,7 +68,7 @@ if (!empty($params['filter_menu'])) {
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <!-- Проверка наличия провайдеров перед выводом блока -->
+                <!-- Проверка наличия постов перед выводом блока -->
                 <?php foreach ($post_types_query as $post_type_key => $post_type_query) : ?>
                     <?php if ($post_type_query->have_posts()) : ?>
                     <div id="lud_<?php echo esc_attr($post_type_key); ?>">

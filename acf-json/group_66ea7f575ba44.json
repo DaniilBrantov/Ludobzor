@@ -101,7 +101,7 @@
             "label": "Язык сокращенный",
             "name": "язык_сокращенный",
             "aria-label": "",
-            "type": "select",
+            "type": "checkbox",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -114,14 +114,14 @@
                 "RUS": "RUS",
                 "ENG": "ENG"
             },
-            "default_value": false,
+            "default_value": [],
             "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "allow_in_bindings": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
+            "allow_custom": 0,
+            "allow_in_bindings": 1,
+            "layout": "vertical",
+            "toggle": 0,
+            "save_custom": 0,
+            "custom_choice_button_text": "Добавить новый выбор"
         },
         {
             "key": "field_66ea7f57813d5",
@@ -433,5 +433,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1726644510
+    "modified": 1727950637
 }

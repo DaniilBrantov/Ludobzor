@@ -109,7 +109,7 @@
                     $args_data = [
                         'cat_title' => 'Лучшие промокоды',
                         'cat_link' => '/bonusy/',
-                        'post_type' => 'online_casino',
+                        'post_type' => ['online_casino'],
                         'posts_per_page' => 20,
                         'post_image' => 'фото_для_главной',
                         'promo' => 'промокод',
@@ -117,7 +117,7 @@
                         'top' => 'топ'
                     ];
 
-                    require( get_theme_file_path('/parts/right-menu/best-promo.php') ); 
+                    require( get_theme_file_path('/parts/filter/best-cat-posts.php') ); 
                 ?>
             </div>
         </div>

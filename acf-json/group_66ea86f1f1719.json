@@ -124,7 +124,7 @@
             "label": "Разработано игр",
             "name": "разработано_игр",
             "aria-label": "",
-            "type": "number",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -134,11 +134,9 @@
                 "id": ""
             },
             "default_value": "",
-            "min": "",
-            "max": "",
-            "allow_in_bindings": 0,
+            "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
-            "step": "",
             "prepend": "",
             "append": ""
         },
@@ -211,7 +209,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "provaideri"
+                "value": "providers"
             }
         ]
     ],
@@ -224,5 +222,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1726646226
+    "modified": 1727876472
 }

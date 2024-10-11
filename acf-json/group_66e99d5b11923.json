@@ -155,6 +155,56 @@
             "append": ""
         },
         {
+            "key": "field_67091125a506b",
+            "label": "Приветственный бонус",
+            "name": "privetstvennyj_bonus",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_6709134138caf",
+            "label": "Тип бонуса",
+            "name": "tip_bonusa",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Приветственный бонус": "Приветственный бонус",
+                "Фриспины": "Фриспины",
+                "Кэшбэк": "Кэшбэк",
+                "Бонусы от букмекеров": "Бонусы от букмекеров"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_66e99773085c3",
             "label": "Чистое название",
             "name": "чистое_название",
@@ -1166,5 +1216,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727782036
+    "modified": 1728650962
 }

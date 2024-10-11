@@ -10,7 +10,7 @@
             </div>
             <?php
                 if(!empty($params)){
-                    require( get_theme_file_path('/parts/part-filter-menu.php') );
+                    require( get_theme_file_path('/parts/filter/filter-menu.php') );
                 };
             ?>
             <div class="container list__freegames list__freegames__40">
