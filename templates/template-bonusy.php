@@ -83,16 +83,21 @@ $params = [
     <div class="container list__payment">
         <div class="row reverse">
 
-            
+            <div class="content col-lg-8 raitingCasino">
             <?php
-                require_once( get_theme_file_path('/parts/part-card-cat.php') );
+                require_once( get_theme_file_path('/parts/card/card-cat.php') );
+                require(get_theme_file_path('/parts/part-page-switch.php'));
                 
+            ?>
+            </div>
+            <?php
+
                 // Лучшие промокоды
                 $args_data = [
                     'cat_title' => 'ТОП обзоры',
                     'post_type' => [
-                        'online_casino',
-                        'bookmakers',
+                        'online_casino' => 'Казино',
+                        'bookmakers' => 'Букмекеры',
                     ],
                     'posts_per_page' => 20,
                     'post_image' => 'фото_для_главной',
@@ -101,8 +106,9 @@ $params = [
                 ];
                 require( get_theme_file_path('/parts/filter/best-cat-posts.php') ); 
 
-                require( get_theme_file_path('/parts/cat-content/part-cat-disclamer.php') ); 
+                require( get_theme_file_path('/parts/cat-content/cat-disclamer.php') ); 
                 
+
                 require( get_theme_file_path('/parts/cat-content/cat-text.php') ); 
         ?>
         </div>

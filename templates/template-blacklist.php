@@ -25,7 +25,7 @@ require( get_theme_file_path('/parts/part-display-promo-cat.php') );
 
 require( get_theme_file_path('/parts/part-page-switch.php') ); 
 
-require( get_theme_file_path('/parts/cat-content/part-cat-disclamer.php') ); 
+require( get_theme_file_path('/parts/cat-content/cat-disclamer.php') ); 
 
 require( get_theme_file_path('/parts/cat-content/cat-text.php') ); 
 

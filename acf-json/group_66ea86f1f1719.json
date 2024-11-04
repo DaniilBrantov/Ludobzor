@@ -3,6 +3,58 @@
     "title": "Поля для провайдеров",
     "fields": [
         {
+            "key": "field_671241155c8ac",
+            "label": "Жанр",
+            "name": "janr",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "janr",
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "field_type": "multi_select",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "bidirectional": 0,
+            "multiple": 0,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_6712416d5c8ad",
+            "label": "Виды игр",
+            "name": "game_types",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "view-of-game",
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "field_type": "multi_select",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "bidirectional": 0,
+            "multiple": 0,
+            "bidirectional_target": []
+        },
+        {
             "key": "field_66ea86f239ec9",
             "label": "Чистое название",
             "name": "чистое_название",
@@ -222,5 +274,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727876472
+    "modified": 1729249975
 }

@@ -1,0 +1,27 @@
+
+.imgNewsNew {    border: 0.5px solid rgba(85, 91, 129, 0.4);
+    padding: 10px; margin-bottom: 20px;}
+    .imgNewsNew {
+      margin-right: 15px;
+    }
+
+    .page__casino .innerH1pp {
+      margin-bottom: 20px;
+    }
+
+
+/* Добавляем CSS-анимацию для эффекта "slide down" */
+.provider-slidetoggle-target {
+    display: none;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+
+
+.fullTextt {
+  overflow: hidden;
+  transition: max-height 1.5s ease;
+}

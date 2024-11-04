@@ -5,7 +5,8 @@
     "active": true,
     "taxonomy": "view-of-game",
     "object_type": [
-        "free_games"
+        "free_games",
+        "providers"
     ],
     "advanced_configuration": 0,
     "import_source": "",
@@ -71,5 +72,5 @@
     "meta_box": "default",
     "meta_box_cb": "",
     "meta_box_sanitize_cb": "",
-    "modified": 1727102184
+    "modified": 1729249422
 }

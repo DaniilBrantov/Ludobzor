@@ -64,7 +64,7 @@
             "add_term": 1,
             "save_terms": 0,
             "load_terms": 0,
-            "return_format": "id",
+            "return_format": "object",
             "field_type": "multi_select",
             "allow_null": 1,
             "allow_in_bindings": 1,
@@ -116,7 +116,7 @@
             "add_term": 1,
             "save_terms": 0,
             "load_terms": 0,
-            "return_format": "id",
+            "return_format": "object",
             "field_type": "multi_select",
             "allow_null": 0,
             "allow_in_bindings": 1,
@@ -148,7 +148,7 @@
         {
             "key": "field_66e85c25f3322",
             "label": "Провайдер",
-            "name": "провайдер",
+            "name": "provajdery",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -169,7 +169,7 @@
         {
             "key": "field_66e85c9ff3323",
             "label": "Волатильность",
-            "name": "волатильность",
+            "name": "volatility",
             "aria-label": "",
             "type": "radio",
             "instructions": "",
@@ -311,7 +311,7 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array",
+            "return_format": "url",
             "library": "all",
             "min_width": "",
             "min_height": "",
@@ -625,5 +625,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727102753
+    "modified": 1729861685
 }

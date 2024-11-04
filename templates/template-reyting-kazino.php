@@ -21,12 +21,19 @@ $params = false;
 
     <div class="container list__payment">
         <div class="row reverse">
-            <?php 
-                require_once( get_theme_file_path('/parts/part-card-cat.php') );
+            <div class="content col-lg-8 raitingCasino">
+
+                <?php 
+                    require_once( get_theme_file_path('/parts/card/card-cat.php') );
+                    require(get_theme_file_path('/parts/part-page-switch.php'));
+
+                ?>
+            </div>
+            <?php
 
                 require( get_theme_file_path('/parts/filter/cat-right-filter.php') );
 
-                require( get_theme_file_path('/parts/cat-content/part-cat-disclamer.php') ); 
+                require( get_theme_file_path('/parts/cat-content/cat-disclamer.php') ); 
 
                 require( get_theme_file_path('/parts/cat-content/cat-text.php') ); 
         ?>

@@ -111,8 +111,8 @@
                 "id": ""
             },
             "choices": {
-                "RUS": "RUS",
-                "ENG": "ENG"
+                "ru": "ru",
+                "eng": "eng"
             },
             "default_value": [],
             "return_format": "value",
@@ -285,34 +285,6 @@
             "append": ""
         },
         {
-            "key": "field_66ea80b7813e1",
-            "label": "Поддержка",
-            "name": "поддержка",
-            "aria-label": "",
-            "type": "checkbox",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "E-mail (поддержка)": "E-mail (поддержка)",
-                "Телефон (поддержка)": "Телефон (поддержка)",
-                "Live Chat (поддержка)": "Live Chat (поддержка)"
-            },
-            "default_value": [],
-            "return_format": "value",
-            "allow_custom": 0,
-            "allow_in_bindings": 0,
-            "layout": "vertical",
-            "toggle": 0,
-            "save_custom": 0,
-            "custom_choice_button_text": "Добавить новый выбор"
-        },
-        {
             "key": "field_66ea80dd813e2",
             "label": "Доступные валюты",
             "name": "доступные_валюты",
@@ -413,6 +385,48 @@
             "default_value": "",
             "allow_in_bindings": 0,
             "placeholder": ""
+        },
+        {
+            "key": "field_671a412378047",
+            "label": "Live Chat (поддержка)",
+            "name": "live_chat_podderzhka",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_671a414178048",
+            "label": "E-mail (поддержка)",
+            "name": "e-mail_podderzhka",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -433,5 +447,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727950637
+    "modified": 1729773948
 }

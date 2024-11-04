@@ -7,19 +7,111 @@ $args_data = [
     'post_type' => 'platezhnie_sistemi',
     'posts_per_page' => 12,
     'post_image' => 'логотип_без_фона',
-    'cat_template' => 'more-data'
+    'top_filter' => true,
 ];
 
-// Массив параметров страниц с фильтрацией и сортировкой
-$params = false;
+// Общие фильтры для всех запросов
+$common_filters = [
+    'crypta' => [
+        'key'     => 'тип',
+        'value'   => 'Криптовалюта',
+        'compare' => '==',
+    ],
+    'card' => [
+        'key'     => 'тип',
+        'value'   => 'Карты',
+        'compare' => '==',
+    ],
+    'wallet' => [
+        'key'     => 'тип',
+        'value'   => 'Электронные кошельки',
+        'compare' => '==',
+    ],
+    'criptowallet' => [
+        'key'     => 'тип',
+        'value'   => 'Криптокошельки',
+        'compare' => '==',
+    ],
 
+];
 
-require( get_theme_file_path('/parts/part-display-promo-cat.php') ); 
+// Параметры сортировки для всех категорий
+$common_orderby = [
+    'orderby' => 'meta_value_num',
+    'order'   => 'DESC',
+];
 
-require( get_theme_file_path('/parts/part-page-switch.php') ); 
-
-require( get_theme_file_path('/parts/cat-content/part-cat-disclamer.php') ); 
-
-require( get_theme_file_path('/parts/cat-content/cat-text.php') ); 
-
+$params = [
+    'filter_menu' => 'payment-systems-filter-menu',
+    'page_args' => [
+        [
+            'menu_title' => 'Криптовалюта',
+            'link'       => 'crypta',
+            'meta_query' => [
+                $common_filters['crypta']
+            ],
+        ],
+        [
+            'menu_title' => 'Карты',
+            'link'       => 'card',
+            'meta_query' => [
+                $common_filters['card']
+            ],
+        ],
+        [
+            'menu_title' => 'Электронные кошельки',
+            'link'       => 'wallet',
+            'meta_query' => [
+                $common_filters['wallet']
+            ],
+        ],
+        [
+            'menu_title' => 'Криптокошельки',
+            'link'       => 'criptowallet',
+            'meta_query' => [
+                $common_filters['criptowallet']
+            ],
+        ],
+        
+        
+    ],
+];
 ?>
+
+<main>
+    <?php require_once get_theme_file_path('parts/part-main-casino.php'); ?>
+
+    <div class="container list__payment">
+        <div class="row reverse">
+            <div class="content col-lg-8 rating-casino">
+            
+                <?php
+                    require_once( get_theme_file_path('/parts/card/card-cat-more.php') );
+                    
+                    
+                    $cat_text = [
+                        'text_version' => 2,
+                        'text_parent' => true
+                    ];
+                    require( get_theme_file_path('/parts/cat-content/cat-text.php') ); 
+                ?>
+            </div>
+            <?php
+                // Лучшие промокоды
+                $args_data = [
+                    'cat_title' => 'ТОП обзоры',
+                    'post_type' => [
+                        'online_casino' => 'Казино',
+                        'bookmakers' => 'Букмекеры',                        
+                    ],
+                    'posts_per_page' => 20,
+                    'post_image' => 'фото_для_главной',
+                    'promo' => 'промокод',
+                    'promo_desc' => 'описание_промокода',
+                ];
+                require( get_theme_file_path('/parts/filter/best-cat-posts.php') ); 
+
+            ?>
+        </div>
+    </div>
+</main>

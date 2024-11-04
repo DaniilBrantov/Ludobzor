@@ -332,7 +332,7 @@
             "label": "Основано",
             "name": "основано",
             "aria-label": "",
-            "type": "number",
+            "type": "select",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -341,14 +341,45 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "min": "",
-            "max": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "step": "",
-            "prepend": "",
-            "append": ""
+            "choices": {
+                "1997": "1997",
+                "1998": "1998",
+                "1999": "1999",
+                "2000": "2000",
+                "2001": "2001",
+                "2002": "2002",
+                "2003": "2003",
+                "2004": "2004",
+                "2005": "2005",
+                "2006": "2006",
+                "2007": "2007",
+                "2008": "2008",
+                "2009": "2009",
+                "2010": "2010",
+                "2011": "2011",
+                "2012": "2012",
+                "2013": "2013",
+                "2014": "2014",
+                "2015": "2015",
+                "2016": "2016",
+                "2017": "2017",
+                "2018": "2018",
+                "2019": "2019",
+                "2020": "2020",
+                "2021": "2021",
+                "2022": "2022",
+                "2023": "2023",
+                "2024": "2024",
+                "2025": "2025"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         },
         {
             "key": "field_66e99811085ca",
@@ -595,7 +626,7 @@
         {
             "key": "field_66e999cb085d4",
             "label": "Провайдеры",
-            "name": "провайдеры",
+            "name": "provajdery",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -639,27 +670,6 @@
             "label": "Поддержка",
             "name": "поддержка",
             "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "allow_in_bindings": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_66e99a2c085d7",
-            "label": "Виды игр",
-            "name": "виды_игр",
-            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -671,10 +681,36 @@
             },
             "default_value": "",
             "maxlength": "",
-            "allow_in_bindings": 0,
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_66e99a2c085d7",
+            "label": "Виды игр",
+            "name": "виды_игр",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "view-of-game",
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "field_type": "multi_select",
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "bidirectional": 0,
+            "multiple": 0,
+            "bidirectional_target": []
         },
         {
             "key": "field_66e99a44085d8",
@@ -704,7 +740,7 @@
             "label": "Запрещенные страны",
             "name": "запрещенные_страны",
             "aria-label": "",
-            "type": "text",
+            "type": "taxonomy",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -713,12 +749,17 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "taxonomy": "prohibited_countries",
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "field_type": "multi_select",
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "bidirectional": 0,
+            "multiple": 0,
+            "bidirectional_target": []
         },
         {
             "key": "field_66e99a5d085da",
@@ -753,7 +794,7 @@
             "label": "Язык сокращенный",
             "name": "язык_сокращенный",
             "aria-label": "",
-            "type": "select",
+            "type": "checkbox",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -763,7 +804,7 @@
                 "id": ""
             },
             "choices": {
-                "RUS": "RUS",
+                "RU": "RU",
                 "ENG": "ENG",
                 "DEU": "DEU",
                 "SPA": "SPA",
@@ -790,14 +831,14 @@
                 "ARM": "ARM",
                 "BUL": "BUL"
             },
-            "default_value": false,
+            "default_value": [],
             "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "allow_in_bindings": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
+            "allow_custom": 0,
+            "allow_in_bindings": 1,
+            "layout": "vertical",
+            "toggle": 0,
+            "save_custom": 0,
+            "custom_choice_button_text": "Добавить новый выбор"
         },
         {
             "key": "field_66e99ba2085dc",
@@ -823,7 +864,7 @@
         {
             "key": "field_66e99bc7085dd",
             "label": "Live Chat (поддержка)",
-            "name": "live_chat_поддержка",
+            "name": "live_chat_podderzhka",
             "aria-label": "",
             "type": "true_false",
             "instructions": "",
@@ -844,7 +885,7 @@
         {
             "key": "field_66e99bfd085de",
             "label": "E-mail (поддержка)",
-            "name": "e-mail_поддержка",
+            "name": "e-mail_podderzhka",
             "aria-label": "",
             "type": "true_false",
             "instructions": "",
@@ -1196,6 +1237,32 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_67111258e056b",
+            "label": "Баннер",
+            "name": "banner",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
         }
     ],
     "location": [
@@ -1216,5 +1283,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728650962
+    "modified": 1730376694
 }

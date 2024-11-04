@@ -7,6 +7,7 @@ foreach ($params['post_type_args'] as $post_type) {
         'post_type'      => $post_type['post_type'],
         'posts_per_page' => $post_type['posts_per_page'],
     ]);
+
 }
 
 // Перебор массива и получение термов для каждой таксономии
@@ -50,8 +51,12 @@ if (!empty($params['filter_menu'])) {
             <?php endif; ?>
 
             <!-- Перебор типов постов -->
-            <?php foreach ($post_types_query as $post_type_key => $post_type_query) : ?>
-                <?php if ($post_type_query->have_posts()) : ?>
+           
+            <?php 
+            foreach ($post_types_query as $post_type_key => $post_type_query) :
+
+                 if ($post_type_query->have_posts()) : ?>
+                    
                     <li><a data-r="<?php echo esc_attr($post_type_key); ?>" class="<?php echo esc_attr($params['post_type_args'][0]['class']); ?>"><?php echo esc_html($params['post_type_args'][0]['title']); ?></a></li>
                 <?php endif; ?>
             <?php endforeach; ?>
@@ -71,7 +76,7 @@ if (!empty($params['filter_menu'])) {
                 <!-- Проверка наличия постов перед выводом блока -->
                 <?php foreach ($post_types_query as $post_type_key => $post_type_query) : ?>
                     <?php if ($post_type_query->have_posts()) : ?>
-                    <div id="lud_<?php echo esc_attr($post_type_key); ?>">
+                    <div class="provider-slidetoggle-target" id="lud_<?php echo esc_attr($post_type_key); ?>">
                         <ul class="menu__smallimage">
                             <?php while ($post_type_query->have_posts()) : $post_type_query->the_post(); ?>
                                 <li class="menu-item small-image">
@@ -89,7 +94,7 @@ if (!empty($params['filter_menu'])) {
                 <!-- Цикл вывода таксономий -->
                 <?php foreach ($terms_data as $section_id => $terms) : ?>
                 <?php if (!empty($terms) && !is_wp_error($terms)) : // Проверка наличия термов ?>
-                <div id="lud_<?php echo esc_attr($section_id); ?>">
+                <div class="provider-slidetoggle-target" id="lud_<?php echo esc_attr($section_id); ?>">
                     <ul class="menu__default">
                         <?php foreach ($terms as $term) : ?>
                         <li><a href="<?php echo esc_url(get_term_link($term)); ?>">#<?php echo esc_html($term->name); ?></a></li>
@@ -102,3 +107,8 @@ if (!empty($params['filter_menu'])) {
         </div>
     </div>
 </div>
+
+
+
+
+

@@ -36,7 +36,7 @@
             'post_type_args' => [
                 [
                     'title' => 'Провайдеры',
-                    'post_type' => 'provaideri',
+                    'post_type' => 'providers',
                     'posts_per_page' => -1,
                     'class' => 'provider-slidetoggle-listt',
                     'data-r' => 'providers',

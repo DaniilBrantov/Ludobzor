@@ -38,17 +38,17 @@ $landCasinos = "nazemnye-kazino/";
 $ratingCasino = "reyting-kazino/";
 $bonuses = "bonusy/";
 $bookmakers = "bookmakers/";
-$bibi = "bibi";
+$bibi = "bibi/";
 $news = "news/";
 $freeGames = "freegames/";
 $providers = "providers/";
-$partners = "/partneram/";
-$aboutUs = "/about-us/";
+$partners = "partneram/";
+$aboutUs = "about-us/";
 $partnerPrograms = "partnyorki/";
-$responsibleGaming = "/otvetstvennaya-igra/";
-$faq = "/f-a-q/";
+$responsibleGaming = "otvetstvennaya-igra/";
+$faq = "f-a-q/";
 $contacts = "/contacts/";
-$paymentSystems = "/payment_systems/";
+$paymentSystems = "payment-systems/";
 ?>
 
 <header>
