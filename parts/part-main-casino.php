@@ -1,25 +1,21 @@
 <?php
-// Создаем новый WP_Query
 $free_games_query = new WP_Query(array(
-    'post_type' => 'online_casino', // Указываем ваш кастомный тип записи
-    'posts_per_page' => 5, // -1 чтобы вывести все записи
+    'post_type' => 'online_casino', 
+    'posts_per_page' => 5, 
 ));
 
-// Проверяем, есть ли записи
 if ($free_games_query->have_posts()) :
     echo '<div class="container block4"><div class="row">';
 
     while ($free_games_query->have_posts()) : $free_games_query->the_post();
-        // Получаем данные кастомных полей через ACF
-        $src = get_field('логотип_без_фона'); // URL изображения
-        $modal_id = get_field('modal_id'); // ID для модального окна
-        $promocode = get_field('промокод'); // Промокод
-        $modal_image = get_field('логотип_без_фона'); // Изображение в модальном окне
+        $src = get_field('логотип_без_фона');
+        $modal_id = get_field('modal_id');
+        $promocode = get_field('promo');
+        $modal_image = get_field('логотип_без_фона');
         $title = get_field('плашка_промо');
-        $href = get_permalink(); // Ссылка на запись
-        $alt = 'Скопировать промокод ' . $title; // Альтернативный текст
+        $href = get_permalink();
+        $alt = 'Скопировать промокод ' . $title; 
 
-        // Выводим карточку
         ?>
         <div class="col angled-img2">
             <div>
@@ -28,8 +24,12 @@ if ($free_games_query->have_posts()) :
                 </a>
                 <div>
                     <div><?= esc_html($title); ?></div>
-                    <div class="copy_promocode_link" data-r="<?= esc_attr($promocode); ?>" data-bs-toggle="modal"
-                        data-bs-target="#<?= esc_attr($modal_id); ?>"><span> Промокод </span></div>
+                        <div class="copy_promocode_link" id="get_promo" data-bs-toggle="modal" data-r="<?= esc_attr($promocode); ?>"
+                                    data-image-src="<?php echo esc_url(get_field('promo_photo', $post_id)); ?>"
+                                    data-promo-code="<?php echo esc_html($promocode); ?>">
+                                    <span> Промокод </span>
+                                </div>
+                        
                 </div>
             </div>
         </div>
@@ -62,6 +62,5 @@ else :
     echo '<p>Записей не найдено</p>';
 endif;
 
-// Восстанавливаем оригинальный $post
 wp_reset_postdata();
 ?>

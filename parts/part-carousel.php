@@ -10,7 +10,7 @@
             </div>
             <?php
                 if (!empty($params)) {
-                    require(get_theme_file_path('/parts/filter/filter-menu.php'));
+                    require(get_theme_file_path('/inc/filter/filter-menu.php'));
                 }
             ?>
             <div class="container list__freegames list__freegames__40">
@@ -18,13 +18,11 @@
                     <div class="owl-stage-outer">
                         <div class="owl-stage">
                             <?php
-                            // Параметры WP_Query
                             $args = array(
                                 'post_type' => esc_attr($args_data['post_type']),
                                 'posts_per_page' => intval($args_data['posts_per_page'])
                             );
 
-                            // Условие для сортировки
                             if (empty($args_data['top'])) {
                                 $args['orderby'] = 'rand';
                             } else {
@@ -48,7 +46,6 @@
                                     }
                                     $news_query->the_post();
 
-                                    // Получение данных поста
                                     $post_id = get_the_ID();
                                     $post_title = get_the_title();
                                     $post_link = get_permalink();
@@ -69,7 +66,15 @@
                                             </a>
                                             <div class="buttons">
                                                 <a href="<?php echo esc_url($post_link); ?>" class="button"><span>Обзор</span></a>
-                                                <a class="button copy_promocode_link" href="#" data-r="LUDOBZOR" data-bs-toggle="modal" data-bs-target="#promocas_<?php echo esc_attr($post_id); ?>"><span>Промокод</span></a>
+                                                <?php
+                                                    $bonus = get_field('banner', $post_id) ?: '';
+                                                    $promo_photo = get_field('promo_photo', $post_id) ?: '';
+                                                ?>
+                                                <a id="get_promo" class="button copy_promocode_link"
+                                                    data-image-src="<?php echo esc_url($promo_photo); ?>"
+                                                    data-promo-code="<?php echo esc_html($promo_code); ?>">
+                                                    <span>Промокод</span>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>

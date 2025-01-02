@@ -1,23 +1,19 @@
-jQuery(document).ready(function($) {
-    // Кнопки "Развернуть" и "Свернуть" в тексте
-    $('.moremore').on('click', function() {
-        const $button = $(this);
-        const $fullText = $('.fullTextt');
+jQuery(document).ready(function ($) {
+  $('.moremore').on('click', function () {
+    const $button = $(this); 
+    const $fullText = $('.fullTextt');
 
-        $fullText.stop().slideToggle(500, function() {
-            $button.text($fullText.is(':visible') ? 'Свернуть' : 'Развернуть');
-        });
+    $fullText.stop().slideToggle(500, function () {
+      $button.text($fullText.is(':visible') ? 'Свернуть' : 'Развернуть');
     });
+  });
 
+  $('.perecluchatel').on('click', function () {
+    const $this = $(this);
+    const $submenu = $this.closest('li').find('.footer__submenu');
 
-
-    // Footer Навигация 
-    $('.perecluchatel').on('click', function() {
-        const $submenu = $(this).closest('li').find('.footer__submenu');
-        $submenu.slideToggle();
-
-        // Меняем знак
-        $(this).text($submenu.is(':visible') ? '-' : '+');
+    $submenu.stop().slideToggle(300, function () {
+      $this.text($submenu.is(':visible') ? '-' : '+');
     });
+  });
 });
-

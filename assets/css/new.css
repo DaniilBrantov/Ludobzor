@@ -1,27 +1,103 @@
+.imgNewsNew {
+  border: 0.5px solid rgba(85, 91, 129, 0.4);
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.imgNewsNew {
+  margin-right: 15px;
+}
 
-.imgNewsNew {    border: 0.5px solid rgba(85, 91, 129, 0.4);
-    padding: 10px; margin-bottom: 20px;}
-    .imgNewsNew {
-      margin-right: 15px;
-    }
-
-    .page__casino .innerH1pp {
-      margin-bottom: 20px;
-    }
-
+.page__casino .innerH1pp {
+  margin-bottom: 20px;
+}
 
 /* Добавляем CSS-анимацию для эффекта "slide down" */
 .provider-slidetoggle-target {
-    display: none;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.3s ease, opacity 0.3s ease;
-    opacity: 0;
+  display: none;
+  overflow: hidden;
+  max-height: 0;
+  transition:
+    max-height 0.3s ease,
+    opacity 0.3s ease;
+  opacity: 0;
 }
-
-
 
 .fullTextt {
   overflow: hidden;
   transition: max-height 1.5s ease;
 }
+
+.onlinecasino_item .title div {
+  background: linear-gradient(180deg, #212333 0%, #212333 0.01%, #212333 100%);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+
+
+
+
+
+
+
+/* Стиль для модального окна */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* полупрозрачный фон */
+  display: none; /* Изначально скрыто */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-dialog {
+  border-radius: 8px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.modal-content {
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+
+
+.force-close {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.force-close:hover {
+  background-color: #0056b3;
+}
+
+/* Пример стилизации изображения */
+.promo__image {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+}
+
+.promo__image__popupp {
+  text-align: center;
+}
+

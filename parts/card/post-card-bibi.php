@@ -13,6 +13,11 @@ $data = [
         'promo' => get_field($args_data['promo']),
     ],
 ];
+$providers_list = array_filter(explode(',', get_field($args_data['providers']) ?? ''));
+
+$bonus = get_field($content_sections['bonus'], $post_id) ?: '';
+$promo_code = get_field('promo', $post_id) ?: 'LUDOBZOR';
+$promo_photo = get_field($content_sections['promo_photo'], $post_id) ?: '';
 ?>
 
 <div class="wrapper__container container">
@@ -27,17 +32,18 @@ $data = [
                          title="<?= esc_attr($data['promocode']['logo']['title']) ?>" width="285" height="70">
                 </div>
             </div>
-            <div class="oc__bonus copy_promocode_link" data-r="<?= $data['promocode']['promo'] ?>" 
-                 data-bs-toggle="modal" data-bs-target="<?= $data['promocode']['modal_target'] ?>"
-                 style="background: url('<?= esc_url($data['promocode']['bonus']) ?>') 
-                 50% 50% no-repeat; background-size: cover;">
+            <div class="oc__bonus copy_promocode_link" id="get_promo"
+                data-image-src="<?php echo esc_url($promo_photo); ?>"
+                data-promo-code="<?php echo esc_html($promo_code); ?>"
+                style="background: url(<?php echo esc_url($data['promocode']['bonus']); ?>) 50% 50% no-repeat; background-size: cover;">
             </div>
             <div class="oc__bonus__timer" id="oc__bonus__timer">
                 <button 
                         style="background: url(<?php echo esc_url(imgName('bonus.svg')); ?>) 50% 50% no-repeat; background-size: cover;"
-                        class="oc__bonus__promocode icon__finger--before copy_promocode_link hhh9i" 
-                        data-r="<?= $data['promocode']['promo'] ?>" 
-                        data-bs-toggle="modal" data-bs-target="<?= $data['promocode']['modal_target'] ?>">
+                        class="oc__bonus__promocode icon__finger--before copy_promocode_link hhh9i" id="get_promo" 
+                        data-promo-code="<?php echo ($promo_code); ?>"
+                        data-image-src="<?php echo esc_url($promo_photo); ?>"
+                        >
                     <span class="oc__bonus__promocode-inner icon__copy__dark--after"> Промокод </span>
                 </button>
             </div>
@@ -50,23 +56,41 @@ $data = [
                     </div>
                 </div>
                 <div class="oc-grid-col">
-                    <div class="oc-grid-item"><span></span>
-                        <div><img class="brand__logo lazy pointer" onclick="window.open('/providers/pragmatic-play/');"
-                                src="/upload/cssinliner_webp/iblock/0a1/0a12a0c6d1c51fbe3974df78aacd868e.webp"
-                                title="Pragmatic Play" alt="Pragmatic Play" width="28" height="28"><img
-                                class="brand__logo lazy pointer" onclick="window.open('/providers/endorphina/');"
-                                src="/upload/cssinliner_webp/iblock/9e5/9e5017302992385390cecad6481a1e1c.webp"
-                                title="Endorphina" alt="Endorphina" width="28" height="28"><img
-                                class="brand__logo lazy pointer" onclick="window.open('/providers/fugaso/');"
-                                src="/upload/cssinliner_webp/iblock/a61/a616539316bc67e8769de89d11f8a642.webp"
-                                title="Fugaso" alt="Fugaso" width="28" height="28">
-                            <div class="tooltip__btn">+1 <div class="tooltip__container"><img
-                                        class="brand__logo lazy pointer" onclick="window.open('/providers/1win/');"
-                                        src="/upload/cssinliner_webp/iblock/7da/oen9y7ssshiqgwbjt06x5n73d6hltj2j.webp"
-                                        title="1WIN" alt="1WIN" width="28" height="28"></div>
-                            </div>
-                        </div> Провайдеры
-                    </div>
+                <div class="oc-grid-item"><span></span>
+    <div>
+        <?php 
+        if (!empty($providers_list)) : // Проверяем, есть ли провайдеры в списке
+            foreach ($providers_list as $provider_name) {
+                $provider_name = trim($provider_name);
+                $provider_query = new WP_Query([
+                    'post_type' => 'providers',
+                    'title' => sanitize_text_field($provider_name),
+                    'posts_per_page' => 1
+                ]);
+                
+                if ($provider_query->have_posts()) :
+                    while ($provider_query->have_posts()) : $provider_query->the_post();
+                        $logo_url = get_field('logo');
+                        $clean_name = get_field('чистое_название');
+                        
+                        if (!empty($clean_name) && !empty($logo_url)) : ?>
+                            <img class="brand__logo lazy pointer" onclick="location.href='<?php the_permalink(); ?>'"
+                                src="<?php echo esc_url($logo_url); ?>" 
+                                title="<?php echo esc_attr($clean_name); ?>"
+                                alt="<?php echo esc_attr($clean_name); ?>" 
+                                width="28" height="28">
+                        <?php 
+                        endif;
+                    endwhile;
+                    wp_reset_postdata();
+                endif;
+            }
+        endif;
+        ?>
+    </div>
+    Провайдеры
+</div>
+
                 </div>
                 <div class="oc-grid-col">
                     <div class="oc-grid-item"><span></span>

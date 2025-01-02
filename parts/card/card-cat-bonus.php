@@ -10,27 +10,24 @@
             </div>
             <?php
                 if(!empty($params)){
-                    require( get_theme_file_path('/parts/filter/filter-menu.php') );
+                    require( get_theme_file_path('/inc/filter/filter-menu.php') );
                 };
             ?>
 
             <div class="row rowwww">
                 <?php
-                // Формирование параметров WP Query в зависимости от наличия top
                 $args = array(
-                    'post_type' => esc_attr($args_data['post_type']), // Тип записи
-                    'posts_per_page' => intval($args_data['posts_per_page']), // Количество записей
+                    'post_type' => esc_attr($args_data['post_type']), 
+                    'posts_per_page' => intval($args_data['posts_per_page']),
                 );
 
-                // Если параметр 'top' не указан или пуст, сортируем случайным образом
                 if (empty($args_data['top'])) {
-                    $args['orderby'] = 'rand'; // Случайный порядок вывода
+                    $args['orderby'] = 'rand';
                 } else {
-                    // Если 'top' указан, добавляем условие мета-запроса для фильтрации
                     $args['meta_query'] = array(
                         array(
                             'key' => esc_attr($args_data['top']),
-                            'value' => '1', // Значение, указывающее на наличие в топ-20
+                            'value' => '1', 
                             'compare' => 'LIKE'
                         )
                     );
@@ -40,14 +37,12 @@
 
                 if ($news_query->have_posts()) :
                     while ($news_query->have_posts()) : $news_query->the_post();
-                        // Получаем данные поста
                         $post_id = get_the_ID();
                         $post_title = get_the_title();
                         $post_link = get_permalink();
                         $post_image_for_home = get_field(esc_attr($args_data['post_image']));
                         $default_image = get_template_directory_uri() . "/assets/images/default-post-img.png";
 
-                        // Условие для вывода поста (если параметр top пуст или пост входит в топ-20)
                         if (empty($args_data['top']) || get_field($args_data['top'])) {
                 ?>
                 <div class="col-md-6 col-lg-4 freegames-full_wrapper col-xl-12 ItemGG0" data-k="0" data-i="2629"
@@ -110,11 +105,15 @@
                             </div>
                             <div class="col-xl-auto">
                                 <div class="divider">
-                                    <span data-r="LUDOBZOR" class="copy_promocode_link" data-bs-toggle="modal"
-                                        data-bs-target="#promo2629">
-                                        <img src="<?php echo esc_html(get_field('баннер_для_пк')); ?>"
-                                            class="nomobile" alt="">
-                                    </span>
+                                <?php
+                                $bonus = get_field('banner', $post_id) ?: '';
+                                $promo_photo = get_field('promo_photo', $post_id) ?: '';
+                                ?>
+                                <div class="oc__bonus copy_promocode_link" id="get_promo"
+                                    data-image-src="<?php echo esc_url($promo_photo); ?>"
+                                    data-promo-code="<?php echo esc_html($promo_code); ?>"
+                                    style="background: url(<?php echo esc_url($bonus); ?>) 50% 50% no-repeat; background-size: cover;">
+                                </div>
                                     <span data-r="LUDOBZOR" class="copy_promocode_link" data-bs-toggle="modal"
                                         data-bs-target="#promo2629">
                                         <img src="<?php echo esc_html(get_field('баннер_для_моб_устройств')); ?>"
@@ -163,9 +162,9 @@
                     </div>
                 </div>
                 <?php
-                        } // Конец условия для вывода постов
+                        } 
                     endwhile;
-                    wp_reset_postdata(); // Сброс данных после завершения цикла WP_Query
+                    wp_reset_postdata();
                 else :
                 ?>
                 <p>Нет записей казино в топ-20.</p>

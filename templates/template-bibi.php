@@ -1,9 +1,13 @@
 <?php
 
-// Подключение основных частей
 require_once get_theme_file_path('parts/part-main-casino.php');
 
-
+$args_data = [
+    'promo' => 'promo',
+    'bonus' => 'bonus',
+    'post_image' => 'logo',
+    'providers' => 'provajders'
+];
 require get_theme_file_path('parts/card/post-card-bibi.php');
 ?>
 
@@ -17,7 +21,6 @@ require get_theme_file_path('parts/card/post-card-bibi.php');
                     $cat_text = ['text_version' => 2];
                     require get_theme_file_path('/parts/cat-content/cat-text.php');
                 
-                // Общие данные для категорий
                 $args_data = [
                     'cat_title' => 'Лучшие бонусы',
                     'post_type' => 'online_casino',
@@ -48,11 +51,10 @@ require get_theme_file_path('parts/card/post-card-bibi.php');
     </div>
     <?php
         $cat_posts = [
-            ['Популярные игры', 'free_games', 4, 'фото_для_главной_webp', 'free_games'],
+            ['Популярные игры', 'free_games', 4, 'photo', 'free_games'],
             ['Похожие казино', 'online_casino', 6, 'логотип_без_фона', 'similar-posts']
         ];
 
-        // Рендер категорийных карточек
         foreach ($cat_posts as $cat_post) {
             render_category_posts([
                 'cat_title' => $cat_post[0],

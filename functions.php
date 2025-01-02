@@ -1,32 +1,16 @@
 <?php
-function mytheme_enqueue_assets() {
-    // Подключение стилей
-    wp_enqueue_style('main-style', get_stylesheet_uri());
-    wp_enqueue_style('header-style', get_template_directory_uri() . '/assets/css/header.css', array('main-style'));
-    wp_enqueue_style('new-style', get_template_directory_uri() . '/assets/css/new.css', array('header-style'));
-    wp_enqueue_style('owl-carousel-style', get_template_directory_uri() . '/node_modules/owl.carousel/dist/assets/owl.carousel.min.css'); // Стили Owl Carousel
+// Подключение файла с подключениями стилей и скриптов
+require_once get_template_directory() . '/inc/enqueue-scripts.php';
 
-    // Подключение скриптов
-    wp_enqueue_script('jquery', get_template_directory_uri() . '/node_modules/jquery/dist/jquery.js', array(), null, true); // Подключение jQuery, если требуется
-    wp_enqueue_script('owl-carousel', get_template_directory_uri() . '/node_modules/owl.carousel/dist/owl.carousel.min.js', array('jquery'), null, true); // Скрипт Owl Carousel
-    wp_enqueue_script('switch-best-posts', get_template_directory_uri() . '/assets/js/switch-best-posts.js', array('jquery'), null, true);
-    wp_enqueue_script('filter-menu', get_template_directory_uri() . '/assets/js/filter-menu.js', array('jquery'), null, true);
-    wp_enqueue_script('carousel', get_template_directory_uri() . '/assets/js/carousel.js', array('jquery'), null, true);
-    wp_enqueue_script('expand-collapse', get_template_directory_uri() . '/assets/js/expand-collapse.js', array('jquery'), null, true);
-}
-add_action('wp_enqueue_scripts', 'mytheme_enqueue_assets');
+//Подключение файла с функциями настройки темы
+require_once get_template_directory() . '/inc/theme-setup.php';
 
+//Подключение файла с endpoint для обработки AJAX-запросов
+require_once get_template_directory() . '/inc/ajax-search-handler.php';
 
-
-function sendToPage($link){
-    return esc_attr($link);
-}
-
-// Путь к изображениям
-function imgName($img_name) {
-    $img_url = "/ludobzor/wordpress/wp-content/themes/ludobzor/assets/images/" . $img_name;
-    return $img_url;
-}
+// Удаляет стандартные мета-теги и стили, которые WordPress добавляет автоматически
+// + Добавление заголовков с фильтрами
+require_once get_template_directory() . '/inc/setting-head.php';
 
 // Функция для поиска нужного параметра в массиве $param
 function get_page_meta_query($params) {
@@ -105,7 +89,7 @@ function custom_breadcrumbs_schema() {
 }
 
 
-function render_category_posts($args_data) {
+function render_category_posts($args_data, $args=false) {
     $params = false;
     require get_theme_file_path('/parts/part-display-promo-cat.php');
 }
@@ -132,13 +116,17 @@ function display_post($post_id, $post_link, $post_title, $post_image, $promo_cod
                         </text>
                     <?php else: ?>
                         <i><?php echo esc_html($promo_description); ?></i>
-                    <?php endif; ?>
+                    <?php endif; 
+
+                    $bonus = get_field('banner', $post_id) ?: '';
+                    $promo_photo = get_field('promo_photo', $post_id) ?: '';
+                    $promo_code = get_field('promo', $post_id) ?: 'LUDOBZOR';
+                    ?>
                     
                     <div class="oc__bonus__timer" id="oc__bonus__timer">
-                        <a class="btn_promo-green copy_promocode_link" 
-                           data-r="<?php echo esc_attr($promo_code); ?>" 
-                           data-bs-toggle="modal" 
-                           data-bs-target="#promo_<?php echo esc_attr($post_id); ?>">
+                        <a id="get_promo" class="btn_promo-green copy_promocode_link" 
+                        data-image-src="<?php echo esc_url($promo_photo); ?>"
+                        data-promo-code="<?php echo esc_html($promo_code); ?>">
                             Промокод
                         </a>
                     </div>
@@ -148,3 +136,137 @@ function display_post($post_id, $post_link, $post_title, $post_image, $promo_cod
     </div>
     <?php
 }
+
+// Функция для получения массива названий терминов таксономии
+function get_taxonomy_terms($taxonomy) {
+    return array_map(function($term) {
+        return $term->name;
+    }, get_terms(['taxonomy' => $taxonomy, 'hide_empty' => false]));
+}
+
+
+
+// Функции для обратной связи
+
+
+// Обработчик AJAX
+function handle_feedback_form() {
+    // Проверяем nonce для безопасности
+    check_ajax_referer('feedback_form_nonce', 'nonce');
+
+    // Получаем данные формы
+    $fio = sanitize_text_field($_POST['fio']);
+    $email = sanitize_email($_POST['email']);
+    $comment = sanitize_textarea_field($_POST['comment']);
+
+    // Проверка обязательных полей
+    if (empty($fio) || empty($email) || empty($comment)) {
+        wp_send_json_error(['message' => 'Все поля обязательны для заполнения.']);
+    }
+
+    // Валидация email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        wp_send_json_error(['message' => 'Введите корректный email.']);
+    }
+
+    // Проверка длины комментария
+    if (strlen($comment) > 200) {
+        wp_send_json_error(['message' => 'Комментарий не может содержать более 200 символов.']);
+    }
+
+    // Получаем текущую дату
+    $current_date = date('Y-m-d');
+
+    // Проверяем, был ли уже отправлен такой же комментарий с тем же email за сегодня
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'posts';
+
+    $duplicate_check = $wpdb->get_var($wpdb->prepare(
+        "SELECT COUNT(*) FROM $table_name WHERE post_type = 'feedback' AND post_status = 'publish' AND meta_key = 'email' AND meta_value = %s AND post_content = %s AND DATE(post_date) = %s",
+        $email, $comment, $current_date
+    ));
+
+    if ($duplicate_check > 0) {
+        wp_send_json_error(['message' => 'Вы уже отправляли этот комментарий сегодня.']);
+    }
+
+    // Создаем запись в кастомном типе записей (например, "Сообщения")
+    $post_id = wp_insert_post([
+        'post_title'   => $fio,
+        'post_content' => $comment,
+        'post_type'    => 'feedback',
+        'post_status'  => 'publish',
+        'meta_input'   => [
+            'email' => $email, // Сохраняем email как метаполе
+        ]
+    ]);
+
+    if ($post_id) {
+        wp_send_json_success(['message' => 'Ваше сообщение успешно отправлено.']);
+    } else {
+        wp_send_json_error(['message' => 'Произошла ошибка. Попробуйте позже.']);
+    }
+}
+
+add_action('wp_ajax_handle_feedback_form', 'handle_feedback_form');
+add_action('wp_ajax_nopriv_handle_feedback_form', 'handle_feedback_form');
+
+// Кастомный тип записей для хранения сообщений
+function register_feedback_post_type() {
+    register_post_type('feedback', [
+        'labels' => [
+            'name'          => 'Обратная связь',
+            'singular_name' => 'Обратная связь',
+        ],
+        'public'        => false,
+        'has_archive'   => false,
+        'show_ui'       => true, // Отображение в админке
+        'supports'      => ['title', 'editor'],
+    ]);
+}
+add_action('init', 'register_feedback_post_type');
+
+// Добавляем колонку для отображения email в таблице записей
+function add_feedback_columns($columns) {
+    $columns['email'] = 'Email отправителя';
+    return $columns;
+}
+add_filter('manage_feedback_posts_columns', 'add_feedback_columns');
+
+// Заполняем колонку email данными
+function fill_feedback_columns($column, $post_id) {
+    if ($column === 'email') {
+        $email = get_post_meta($post_id, 'email', true); // Получаем значение метаполя
+        echo esc_html($email);
+    }
+}
+add_action('manage_feedback_posts_custom_column', 'fill_feedback_columns', 10, 2);
+
+// JavaScript для отправки формы без перезагрузки
+function enqueue_feedback_form_scripts() {
+    wp_enqueue_script(
+        'feedback-form-script',
+        get_template_directory_uri() . '/assets/js/feedback-form.js',
+        ['jquery'],
+        null,
+        true
+    );
+
+    wp_localize_script('feedback-form-script', 'feedbackForm', [
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce'    => wp_create_nonce('feedback_form_nonce'),
+    ]);
+}
+add_action('wp_enqueue_scripts', 'enqueue_feedback_form_scripts');
+
+
+
+// Ограничить доступ к контенту для неавторизованных пользователей. 
+function restrict_site_to_logged_in_users() {
+    if (!is_user_logged_in() && !is_admin() && !defined('DOING_AJAX')) {
+        wp_redirect(wp_login_url());
+        exit;
+    }
+}
+add_action('template_redirect', 'restrict_site_to_logged_in_users');
+

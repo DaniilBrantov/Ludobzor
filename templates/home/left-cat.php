@@ -2,63 +2,58 @@
 
 
     <?php 
-                // Актуальные новости
                 $args_data = [
                     'cat_title' => 'Актуальные новости',
                     'link_title' => 'новости',
                     'cat_link' => '/news/',
                     'post_type' => 'news',
                     'posts_per_page' => 3,
-                    'post_image' => 'фото',
+                    'post_image' => 'photo',
                     'top' => 'топ'
                 ];
                 require( get_theme_file_path('/parts/left-cat/left-cat-img-title.php') ); 
 
-                // Обзор слотов
                 $args_data = [
                     'cat_title' => 'Обзор слотов',
                     'link_title' => 'слоты',
                     'cat_link' => '/obzory/obzor-slotov/',
                     'post_type' => 'slots',
                     'posts_per_page' => 6,
-                    'post_image' => 'фото',
+                    'post_image' => 'photo',
                     'top' => false
                 ];
                 require( get_theme_file_path('/parts/left-cat/left-cat-img.php') ); 
 
-                // Лучшие наземные казино
                 $args_data = [
                     'cat_title' => 'Лучшие наземные казино',
                     'link_title' => 'казино',
                     'cat_link' => '/nazemnye-kazino/',
                     'post_type' => 'nazemnye_kazino',
                     'posts_per_page' => 6,
-                    'post_image' => 'фото_для_главной',
+                    'post_image' => 'photo',
                     'top' => 'топ'
                 ];
                 require( get_theme_file_path('/parts/left-cat/left-cat-img.php') ); 
 
-                // Полезные статьи
                 $args_data = [
                     'cat_title' => 'Полезные статьи',
                     'link_title' => 'статьи',
                     'cat_link' => '/f-a-q/',
                     'post_type' => 'faq_articles',
                     'posts_per_page' => 3,
-                    'post_image' => 'фото_для_главной',
+                    'post_image' => 'photo',
                     'top' => 'топ'
                 ];
                 require( get_theme_file_path('/parts/left-cat/left-cat-img-title.php') ); 
 
 
-                // Обзоры стримеров
                 $args_data = [
                     'cat_title' => 'Обзоры стримеров',
                     'link_title' => 'стримеры',
                     'cat_link' => '/obzor-strimerov/',
                     'post_type' => 'obzor_strimerov',
                     'posts_per_page' => 6,
-                    'post_image' => 'фото',
+                    'post_image' => 'photo',
                     'top' => 'топ'
                 ];
                 require( get_theme_file_path('/parts/left-cat/left-cat-img.php') ); 

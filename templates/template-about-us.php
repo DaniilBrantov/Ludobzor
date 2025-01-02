@@ -12,7 +12,6 @@
 
             <?php
                 
-                // Лучшие промокоды
                 $args_data = [
                     'cat_title' => 'ТОП обзоры',
                     'post_type' => [
@@ -20,11 +19,11 @@
                         'bookmakers' => 'Букмекеры',
                     ],
                     'posts_per_page' => 20,
-                    'post_image' => 'фото_для_главной',
-                    'promo' => 'промокод',
+                    'post_image' => 'photo',
+                    'promo' => 'promo',
                     'promo_desc' => 'описание_промокода',
                 ];
-                require( get_theme_file_path('/parts/filter/best-cat-posts.php') ); 
+                require( get_theme_file_path('/inc/filter/best-cat-posts.php') ); 
         ?>
         </div>
     </div>

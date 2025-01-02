@@ -22,29 +22,36 @@
     <div class="casino-all-info-inner casino-all-info-inner-right casino-all-info">
     <?php if (count($args_data['post_type']) > 1): ?>
         <div class="tab-nav">
-            <!-- Вкладки для переключения постов -->
             <?php foreach ($args_data['post_type'] as $key => $label): ?>
                 <a href="javascript:void(0);" class="tab-link" data-type="<?php echo esc_attr($label); ?>"><?php echo esc_html($label); ?></a>
             <?php endforeach; ?>
         </div>
-    <?php endif; ?>
-
-    <?php foreach ($args_data['post_type'] as $key_post_type => $post_type): 
+    <?php endif; 
+    $index = 0;
+        foreach ($args_data['post_type'] as $key_post_type => $post_type): 
+            
+            
+            
             if (count($args_data['post_type']) > 1){
                 $post_type_name = $key_post_type;
             }else{
                 $post_type_name = $post_type;
+            };
+
+            if($index === 1){
+                $display_style = 'style="display: none;"';
+            }else{
+                $display_style = '';
             }
+            $index++;
         ?>
-        <div class="sidebar-casino-all-info flex tab-content tab-content-<?php echo esc_attr($post_type_name); ?>">
+        <div <?php echo $display_style; ?> class="sidebar-casino-all-info flex tab-content tab-content-<?php echo esc_attr($post_type_name); ?>">
             <?php
-            // Проверка валидности `post_type`
             if (!post_type_exists($post_type_name)) {
                 echo '<p>Некорректный тип поста: ' . esc_html($post_type_name) . '.</p>';
                 continue;
             }
 
-            // Формирование мета-запроса
             $meta_query = [];
             if (!empty($args_data['top'])) {
                 $meta_query[] = [
@@ -54,7 +61,6 @@
                 ];
             }
 
-            // Аргументы для WP Query
             $args = [
                 'post_type' => $post_type_name,
                 'posts_per_page' => intval($args_data['posts_per_page']),
@@ -66,7 +72,6 @@
 
             if ($news_query->have_posts()) :
                 while ($news_query->have_posts()) : $news_query->the_post();
-                    // Получение данных поста
                     $post_id = get_the_ID();
                     $post_title = get_the_title();
                     $post_link = get_permalink();
@@ -74,13 +79,13 @@
                     $promo_code = get_field($args_data['promo']);
                     $promo_description = get_field($args_data['promo_desc']);
 
-                    // Вывод HTML
                     display_post($post_id, $post_link, $post_title, $post_image, $promo_code, $promo_description, $args_data);
                 endwhile;
                 wp_reset_postdata();
             else :
                 echo '<p>Нет доступных промокодов для ' . esc_html($post_type_name) . '.</p>';
             endif;
+            
             ?>
         </div>
     <?php endforeach; ?>

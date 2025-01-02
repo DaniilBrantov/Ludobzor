@@ -1,14 +1,12 @@
 <?php
 $post_type = $args_data['post_type'];
 
-// Настраиваем запрос для получения постов указанного типа
 $query = new WP_Query([
     'post_type' => $post_type,
-    'posts_per_page' => -1, // Получаем все посты (можно ограничить, если нужно)
+    'posts_per_page' => -1,
 ]);
 
 
-// Проверяем, есть ли посты
 if ($query->have_posts()) :
 ?>
     <div class="sidebar-info col-lg-4">
@@ -18,7 +16,6 @@ if ($query->have_posts()) :
                 <div class="widget-title"><span>ТУРНИРЫ</span></div>
                 <div class="tourn-item-group">
                     <?php 
-                    // Выводим каждый пост
                     while ($query->have_posts()) : $query->the_post();
                         $img = get_field('photo');
                         $title = get_the_title();
@@ -58,11 +55,9 @@ if ($query->have_posts()) :
         </div>
     </div>
 <?php
-// Если постов нет, можно добавить сообщение
 else :
     echo '<p>Турниры не найдены.</p>';
 endif;
 
-// Восстанавливаем глобальную переменную поста
 wp_reset_postdata();
 ?>

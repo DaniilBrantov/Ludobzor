@@ -1,7 +1,6 @@
 <?php
 require_once get_theme_file_path('parts/part-main-casino.php');
 
-// Общие данные для категорий
 $args_data = [
     'cat_title' => 'Платежные системы ',
     'post_type' => 'platezhnie_sistemi',
@@ -10,7 +9,6 @@ $args_data = [
     'top_filter' => true,
 ];
 
-// Общие фильтры для всех запросов
 $common_filters = [
     'crypta' => [
         'key'     => 'тип',
@@ -35,7 +33,6 @@ $common_filters = [
 
 ];
 
-// Параметры сортировки для всех категорий
 $common_orderby = [
     'orderby' => 'meta_value_num',
     'order'   => 'DESC',
@@ -97,7 +94,6 @@ $params = [
                 ?>
             </div>
             <?php
-                // Лучшие промокоды
                 $args_data = [
                     'cat_title' => 'ТОП обзоры',
                     'post_type' => [
@@ -105,11 +101,11 @@ $params = [
                         'bookmakers' => 'Букмекеры',                        
                     ],
                     'posts_per_page' => 20,
-                    'post_image' => 'фото_для_главной',
-                    'promo' => 'промокод',
+                    'post_image' => 'photo',
+                    'promo' => 'promo',
                     'promo_desc' => 'описание_промокода',
                 ];
-                require( get_theme_file_path('/parts/filter/best-cat-posts.php') ); 
+                require( get_theme_file_path('/inc/filter/best-cat-posts.php') ); 
 
             ?>
         </div>

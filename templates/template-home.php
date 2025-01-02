@@ -3,9 +3,6 @@
         require_once get_theme_file_path('templates/home/part-banner.php');
         require_once get_theme_file_path('parts/part-main-casino.php');
 
-        // Бесплатные игровые автоматы
-
-        // Массив параметров
         $params = [
             'taxonomies' => [
                 [
@@ -50,7 +47,7 @@
             'cat_link' => '/freegames/',
             'post_type' => 'free_games',
             'posts_per_page' => 12,
-            'post_image' => 'фото_для_главной_webp',
+            'post_image' => 'photo',
         ];
 
         $button = [
@@ -61,7 +58,6 @@
         require( get_theme_file_path('/parts/part-carousel.php') ); 
 
 
-        // Лучшие онлайн-казино
         $params = false;
 
         $args_data = [
@@ -69,7 +65,7 @@
             'cat_link' => '/obzory/reviews/',
             'post_type' => 'online_casino',
             'posts_per_page' => 20,
-            'post_image' => 'фото_для_главной',
+            'post_image' => 'photo',
         ];
 
         $button = [
@@ -80,7 +76,6 @@
         require( get_theme_file_path('/parts/part-carousel.php') ); 
 
 
-        // Лучшие букмекеры
         $params = false;
 
         $args_data = [
@@ -88,7 +83,7 @@
             'cat_link' => '/bookmakers/',
             'post_type' => 'bookmakers',
             'posts_per_page' => 20,
-            'post_image' => 'фото_для_главной',
+            'post_image' => 'photo',
         ];
 
         $button = [
@@ -105,19 +100,18 @@
                 <?php
                     require_once get_theme_file_path('templates/home/left-cat.php');
 
-                    // Лучшие промокоды
                     $args_data = [
                         'cat_title' => 'Лучшие промокоды',
                         'cat_link' => '/bonusy/',
                         'post_type' => ['online_casino'],
                         'posts_per_page' => 20,
-                        'post_image' => 'фото_для_главной',
-                        'promo' => 'промокод',
+                        'post_image' => 'photo',
+                        'promo' => 'promo',
                         'promo_desc' => 'описание_промокода',
                         'top' => 'топ'
                     ];
 
-                    require( get_theme_file_path('/parts/filter/best-cat-posts.php') ); 
+                    require( get_theme_file_path('/inc/filter/best-cat-posts.php') ); 
                 ?>
             </div>
         </div>

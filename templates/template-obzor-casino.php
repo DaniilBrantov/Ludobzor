@@ -1,7 +1,6 @@
 <?php
 require_once get_theme_file_path('parts/part-main-casino.php');
 
-// Общие данные для категорий
 $args_data = [
     'cat_title' => 'Обзор Казино',
     'post_type' => 'online_casino',
@@ -10,7 +9,6 @@ $args_data = [
     'cat_template' => 'promo-more'
 ];
 
-// Общие фильтры для всех запросов
 $common_filters = [
     'license_exists' => [
         'key'     => 'лицензия',
@@ -36,13 +34,11 @@ $common_filters = [
     ],
 ];
 
-// Параметры сортировки для всех категорий
 $common_orderby = [
     'orderby' => 'meta_value_num',
     'order'   => 'DESC',
 ];
 
-// Массив параметров страниц с фильтрацией и сортировкой
 $params = [
     'filter_menu' => 'casino-filter-menu',
     'page_args' => [

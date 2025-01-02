@@ -1,16 +1,12 @@
 <main class="content col-lg-8 online-casino active_tab" id="obzor">
     <?php
-    // Функция для добавления ID и ссылки на оглавление в заголовок <h2>
     function process_heading($content, $item, $is_first) {
-        // Шаблон заголовка h2
         $heading_template = '<h2 class="wp-block-heading" id="%s">%s</h2>';
         
-        // Если это не первый заголовок, добавляем ссылку на оглавление перед ним
         if (!$is_first) {
             $heading_template = '<a rel="nofollow" class="kc-gotop kc__gotop" href="#toc">к оглавлению ↑</a>' . $heading_template;
         }
 
-        // Используем регулярное выражение для замены заголовков h2
         return preg_replace(
             '/<h2 class="wp-block-heading">(\s*' . preg_quote($item['label'], '/') . '\s*)<\/h2>/',
             sprintf($heading_template, esc_attr($item['href']), '$1'),
@@ -30,22 +26,17 @@
     </ul>
 
     <?php
-    // Получаем контент страницы
     $content = apply_filters('the_content', get_the_content());
 
-    // Обрабатываем контент, чтобы добавить id к заголовкам h2
     foreach ($menu_items as $index => $item) {
-        // Если индекс 0, то это первый заголовок, и мы не добавляем ссылку "к оглавлению ↑"
         $is_first = ($index === 0);
         $content = process_heading($content, $item, $is_first);
     }
 
-    // Выводим обработанный контент
     echo $content;
 
 
     if($post->post_type == 'online_casino' || $post->post_type == 'bookmakers'){
-        // Общие данные для категорий
         $args_data = [
             'cat_title' => 'Лучшие бонусы',
             'post_type' => 'online_casino',

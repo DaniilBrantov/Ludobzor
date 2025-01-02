@@ -1,21 +1,17 @@
 <?php
 
-// Получаем данные для текущей страницы
 $page_data = get_page_meta_query($params);
 
-// Подготовка аргументов для WP_Query
 $args = array(
     'post_type'      => esc_attr($args_data['post_type']),
     'posts_per_page' => intval($args_data['posts_per_page']),
 );
 
-// Добавляем meta_query, если он не пустой
 if (!empty($page_data['meta_query'])) {
     $args['meta_query'] = $page_data['meta_query'];
 }elseif(!empty($args_data['meta_query'])) {
     $args['meta_query'] = $args_data['meta_query'];
 }
-// Выполняем запрос WP_Query
 $query = new WP_Query($args);
 
 
@@ -37,7 +33,7 @@ $query = new WP_Query($args);
 <?php }; 
      
         if($args_data['top_filter']){
-            require( get_theme_file_path('/parts/filter/cat-card-filter.php') );
+            require( get_theme_file_path('/inc/filter/cat-card-filter.php') );
         }
 
         if ($query->have_posts()) : 
@@ -81,8 +77,8 @@ $query = new WP_Query($args);
             href="<?php the_permalink(); ?>"><?php echo esc_html(get_field('чистое_название')); ?> онлайн-казино</a>
         <?php if ($game_types) : ?>
         <div class="list-game">
-            
-            
+
+
         </div>
         <?php endif; ?>
 
@@ -125,7 +121,7 @@ $query = new WP_Query($args);
                                         ]);
                                         if ($provider_query->have_posts()) :
                                             while ($provider_query->have_posts()) : $provider_query->the_post();
-                                                $logo_url = get_field('логотип');
+                                                $logo_url = get_field('logo');
                                                 $clean_name = get_field('чистое_название');
                                                 if (!empty($clean_name) && !empty($logo_url)) : ?>
                     <img class="brand__logo lazy pointer" onclick="location.href='<?php the_permalink(); ?>'"
@@ -174,8 +170,13 @@ $query = new WP_Query($args);
     <div class="col-12 oc__bottom__column">
         <div class="casino__bonus js__false_promo row">
             <span class="col-sm"><?php echo $promo_desc; ?></span>
-            <a class="copy-codee col-sm-auto btn_promo-purple copy_promocode_link" href="" data-bs-toggle="modal"
-                data-bs-target="#promoo_<?php echo get_the_ID(); ?>">
+            <?php
+                $bonus = get_field('banner', $post_id) ?: '';
+                $promo_photo = get_field('promo_photo', $post_id) ?: '';
+            ?>
+            <a id="get_promo" class="copy-codee col-sm-auto btn_promo-purple copy_promocode_link"
+                data-image-src="<?php echo esc_url($promo_photo); ?>"
+                data-promo-code="<?php echo esc_html($promo_code); ?>">
                 <span>Промокод</span>
             </a>
         </div>
@@ -183,30 +184,6 @@ $query = new WP_Query($args);
     <div class="oc__header--right"></div>
 </div>
 
-<div class="modal fade" tabindex="-1" id="promoo_<?php echo get_the_ID(); ?>">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
-            <div class="modal-body">
-                <div class="container">
-                    <div class="row modal_card" promocode="LUDOBZOR">
-                        <div class="col-md-6">
-                            <div class="promo__image promo__image__popupp"
-                                data-i="/upload/iblock/b07/cmhu72f8vpgdgoj98gzffeggvo2w82ir.jpg">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                    alt="" class="promo__image">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <i class="iu1"></i>
-                <i class="iu2"></i>
-            </div>
-        </div>
-    </div>
-</div>
 <?php endwhile; ?>
 <?php wp_reset_postdata(); ?>
 <?php else : ?>

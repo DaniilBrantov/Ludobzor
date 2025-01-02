@@ -1,9 +1,6 @@
 <?php
 require_once get_theme_file_path('parts/part-main-casino.php');
 
-        // Бесплатные игровые автоматы
-
-        // Массив параметров
         $params = [
             'taxonomies' => [
                 [
@@ -48,7 +45,7 @@ require_once get_theme_file_path('parts/part-main-casino.php');
             'cat_link' => '/freegames/',
             'post_type' => 'free_games',
             'posts_per_page' => 12,
-            'post_image' => 'фото_для_главной_webp',
+            'post_image' => 'photo',
         ];
 
         $button = [

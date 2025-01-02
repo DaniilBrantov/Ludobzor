@@ -2,12 +2,11 @@
 
 $post_type = get_post_type();
 $post_id = isset($post_id) ? $post_id : get_the_ID();
-
-
 if($post_type == 'online_casino' || $post_type == 'news' || $post_type == 'faq_articles'){
     $content_sections = [
         'logo_url' => 'логотип_без_фона',
         'bonus' => 'banner',
+        'promo_photo' => 'promo_photo',
         'rates' => [
             'основано' => 'Основано',
 
@@ -108,7 +107,8 @@ if($post_type == 'online_casino' || $post_type == 'news' || $post_type == 'faq_a
         'buttons' => [
             'promo' => [
                 'img' => imgName('bonus.svg'),
-                'title' => 'Промокод'
+                'title' => 'Рейтинг Казино',
+                'link' => '/reyting-kazino'
             ],
             'freegames' => [
                 'img' => imgName('bonus.svg'),
@@ -301,12 +301,21 @@ if($post_type == 'online_casino' || $post_type == 'news' || $post_type == 'faq_a
 
 // Получаем значения для каждого из разделов контента
 $providers_list = array_filter(explode(',', get_field($content_sections['providers_list']['data'], $post_id) ?? ''));
-$payment_list = array_filter(explode(',', get_field($content_sections['payment_list']['data'], $post_id) ?? ''));
+$payment_data = get_field($content_sections['payment_list']['data']);
+$payment_list = $payment_data ? array_map(fn($item) => $item->post_title, $payment_data) : [];
+
+
 $logo_url = get_field($content_sections['logo_url'], $post_id) ?: ''; // Получаем логотип
 $bonus = get_field($content_sections['bonus'], $post_id) ?: '';
+$promo_code = get_field('promo', $post_id) ?: 'LUDOBZOR';
+$promo_photo = get_field($content_sections['promo_photo'], $post_id) ?: '';
 $rates = $content_sections['rates'] ?? [];
 $buttons = $content_sections['buttons'] ?? [];
-$langs = get_field($content_sections['langs']['data'], $post_id) ?: '';
+$langs = get_field($content_sections['langs']['data']);
+$langs = $langs ? implode(', ', array_map(fn($term) => $term->name, $langs)) : '';
+
+//$langs = implode(', ', array_map(fn($item) => $item->post_title, get_field($content_sections['langs']['data'])));
+
 ?>
 
 <div class="container wrapper__container">
@@ -322,7 +331,9 @@ $langs = get_field($content_sections['langs']['data'], $post_id) ?: '';
             </div>
 
             <?php if ($bonus): ?>
-            <div class="oc__bonus copy_promocode_link"
+            <div class="oc__bonus copy_promocode_link" id="get_promo"
+                data-image-src="<?php echo esc_url($promo_photo); ?>"
+                data-promo-code="<?php echo esc_html($promo_code); ?>"
                 style="background: url(<?php echo esc_url($bonus); ?>) 50% 50% no-repeat; background-size: cover;">
             </div>
             <?php endif; 
@@ -359,6 +370,17 @@ $langs = get_field($content_sections['langs']['data'], $post_id) ?: '';
                         <div class="rate__inset"><?php 
                             $field_value = get_field($field, $post_id);
 
+                            if (is_array($field_value)) {
+
+                                $term_names = array_map(function($term) {
+                                    return $term->name;
+                                }, $field_value);
+                                
+                                $field_value = implode(', ', $term_names);
+
+                            }elseif (is_object($field_value)) {
+                                $field_value = $field_value->name;
+                            }
                             if ($field_value) {
                                 echo esc_html($field_value);
                             } else {
@@ -394,7 +416,7 @@ $langs = get_field($content_sections['langs']['data'], $post_id) ?: '';
                             if ($provider_query->have_posts()) {
                                 while ($provider_query->have_posts()) {
                                     $provider_query->the_post();
-                                    $logo_url = get_field('логотип');
+                                    $logo_url = get_field('logo');
                                     $clean_name = get_field('чистое_название');
                                     if ($clean_name && $logo_url) {
                                         echo '<img class="brand__logo lazy pointer" onclick="location.href=\'' . get_permalink() . '\'" src="' . esc_url($logo_url) . '" title="' . esc_attr($clean_name) . '" alt="' . esc_attr($clean_name) . '" width="28" height="28">';
@@ -406,12 +428,15 @@ $langs = get_field($content_sections['langs']['data'], $post_id) ?: '';
                         echo '</div>';
                     } elseif ($key === 'payment_list' && !empty($payment_list)) {
                         echo '<div class="list__inline">';
+
                         foreach ($payment_list as $payment_name) {
+
                             $payment_query = new WP_Query([
                                 'post_type' => 'platezhnie_sistemi',
                                 'title' => sanitize_text_field($payment_name),
                                 'posts_per_page' => -1,
                             ]);
+
                             if ($payment_query->have_posts()) {
                                 while ($payment_query->have_posts()) {
                                     $payment_query->the_post();
@@ -427,7 +452,7 @@ $langs = get_field($content_sections['langs']['data'], $post_id) ?: '';
                         echo '</div>';
                     } elseif ($key === 'langs' && !empty($langs)) {
                         echo '<div class="ch__item last-child ch_item_country_n"><div class="oc__access__country" title="Доступно из России">';
-                        echo implode(', ', array_map('esc_html', $langs));
+                        echo $langs;
                         echo '</div></div>';
                     } else {
                         // Обработка массива данных по умолчанию

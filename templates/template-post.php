@@ -2,7 +2,6 @@
 
 // Подключение основных частей
 require_once get_theme_file_path('parts/part-main-casino.php');
-
 // Общий массив sidebars для всех типов постов
 $all_sidebars = [
     'platezhnie_sistemi' => [
@@ -17,8 +16,8 @@ $all_sidebars = [
         [
             'title' => 'Служба поддержки',
             'args' => [
-                'live_chat_podderzhка' => 'Live Chat',
-                'e-mail_podderzhка' => 'E-mail',
+                'live_chat_podderzhka' => 'Live Chat',
+                'e-mail_podderzhka' => 'E-mail',
             ],
         ],
     ],
@@ -43,7 +42,7 @@ $all_sidebars = [
                 'номер_лицензии' => 'Номер лицензии',
                 'основано' => 'Год основания',
                 'виды_игр' => 'Виды игр',
-                'provajderы' => 'Провайдеры',
+                'provajders' => 'Провайдеры',
                 'мобильная_версия' => 'Мобильная версия',
                 'владелец' => 'Владелец',
                 'количество_игр' => 'Количество игр',
@@ -96,6 +95,7 @@ if (in_array($post->post_type, ['free_games', 'providers', 'partnyorki', 'news',
     $post_id = $post_info->ID;
     require get_theme_file_path('parts/card/post-card.php');
 }
+
 ?>
 <div class="page__casino container">
     <div class="row">
@@ -127,11 +127,11 @@ if (in_array($post->post_type, ['free_games', 'providers', 'partnyorki', 'news',
                             'bookmakers' => 'Букмекеры',
                         ],
                         'posts_per_page' => 20,
-                        'post_image' => 'фото_для_главной',
-                        'promo' => 'промокод',
+                        'post_image' => 'photo',
+                        'promo' => 'promo',
                         'promo_desc' => 'описание_промокода',
                     ];
-                    require get_theme_file_path('/parts/filter/best-cat-posts.php');
+                    require get_theme_file_path('/inc/filter/best-cat-posts.php');
                 ?>
             </div>
         </div>
@@ -140,16 +140,16 @@ if (in_array($post->post_type, ['free_games', 'providers', 'partnyorki', 'news',
             // Определение параметров для категории на основе типа поста
             $category_posts = [
                 'online_casino' => [
-                    ['Популярные игры', 'free_games', 4, 'фото_для_главной_webp', 'free_games'],
+                    ['Популярные игры', 'free_games', 4, 'photo', 'free_games'],
                     ['Похожие казино', 'online_casino', 4, 'логотип_без_фона', 'similar-posts']
                 ],
                 'platezhnie_sistemi' => [
-                    ['Интересные новости', 'news', 3, 'фото', 'title'],
-                    ['Интересные статьи', 'faq_articles', 3, 'фото_для_главной', 'title'],
-                    ['Популярные игры', 'free_games', 3, 'фото_для_главной_webp', 'free_games']
+                    ['Интересные новости', 'news', 3, 'photo', 'title'],
+                    ['Интересные статьи', 'faq_articles', 3, 'photo', 'title'],
+                    ['Популярные игры', 'free_games', 3, 'photo', 'free_games']
                 ],
                 'free_games' => [
-                    ['Другие демо игры провайдера ' . explode(', ', get_field('провайдер'))[0], 'free_games', 35, 'фото_для_главной_webp', 'title-janr']
+                    ['Другие демо игры провайдера ' . explode(', ', get_field('провайдер'))[0], 'free_games', 35, 'photo', 'title-janr']
                 ],
                 'bookmakers' => [
                     ['post_id' => 462]
@@ -184,6 +184,7 @@ if (in_array($post->post_type, ['free_games', 'providers', 'partnyorki', 'news',
                     custom_breadcrumbs_schema();
                 }
             }
+            
         ?>
     </div>
 </div>

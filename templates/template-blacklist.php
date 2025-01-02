@@ -1,7 +1,6 @@
 <?php
 require_once get_theme_file_path('parts/part-main-casino.php');
 
-// Общие данные для категорий
 $args_data = [
     'cat_title' => 'Чёрный список казино',
     'post_type' => 'online_casino',
@@ -17,7 +16,6 @@ $args_data = [
     ]
 ];
 
-// Массив параметров страниц с фильтрацией и сортировкой
 $params = false;
 
 

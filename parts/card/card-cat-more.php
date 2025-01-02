@@ -1,21 +1,17 @@
 <?php
 
-// Получаем данные для текущей страницы
 $page_data = get_page_meta_query($params);
 
-// Подготовка аргументов для WP_Query
 $args = array(
     'post_type'      => esc_attr($args_data['post_type']),
     'posts_per_page' => intval($args_data['posts_per_page']),
 );
 
-// Добавляем meta_query, если он не пустой
 if (!empty($page_data['meta_query'])) {
     $args['meta_query'] = $page_data['meta_query'];
 }elseif(!empty($args_data['meta_query'])) {
     $args['meta_query'] = $args_data['meta_query'];
 }
-// Выполняем запрос WP_Query
 $query = new WP_Query($args);
 
 
@@ -28,7 +24,7 @@ $query = new WP_Query($args);
 
 <?php 
         if (!empty($args_data['top_filter'])) {
-            require( get_theme_file_path('/parts/filter/cat-card-filter.php') );
+            require( get_theme_file_path('/inc/filter/cat-card-filter.php') );
         }
 
         if ($query->have_posts()) : 
@@ -37,7 +33,6 @@ $query = new WP_Query($args);
 <div class="row rowwww">
     <?php while ($query->have_posts()) : $query->the_post(); ?>
     <?php 
-                // Dynamic variables for each item
                 $title = get_the_title();
                 $link = get_permalink();
                 $image_url = get_field(esc_attr($args_data['post_image']));

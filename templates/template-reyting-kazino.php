@@ -1,6 +1,5 @@
 <?php
 
-// Общие данные для категорий
 $args_data = [
     'cat_title' => 'Рейтинг казино',
     'post_type' => 'online_casino',
@@ -31,7 +30,7 @@ $params = false;
             </div>
             <?php
 
-                require( get_theme_file_path('/parts/filter/cat-right-filter.php') );
+                require( get_theme_file_path('/inc/filter/cat-right-filter.php') );
 
                 require( get_theme_file_path('/parts/cat-content/cat-disclamer.php') ); 
 
