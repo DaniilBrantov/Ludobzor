@@ -1,18 +1,24 @@
 <?php
+if(!empty($review_post)){
+$post_type = $review_post->post_type;
+$post_id = $review_post->ID;
+}else{
+    $post_type = get_post_type();
+    $post_id = get_the_ID();
 
-$post_type = get_post_type();
-$post_id = isset($post_id) ? $post_id : get_the_ID();
+}
+
 if($post_type == 'online_casino' || $post_type == 'news' || $post_type == 'faq_articles'){
     $content_sections = [
-        'logo_url' => 'логотип_без_фона',
+        'logo_url' => 'logo',
         'bonus' => 'banner',
         'promo_photo' => 'promo_photo',
         'rates' => [
-            'основано' => 'Основано',
+            'based_on' => 'Основано',
 
-            'лицензия' => 'Лицензия',
-            'минимальная_сумма_депозита' => 'Мин. депозит',
-            'лимиты_на_вывод' => 'Мин. вывод',
+            'license' => 'Лицензия',
+            'min_deposit' => 'Мин. депозит',
+            'withdraw_limits' => 'Мин. вывод',
             'скорость_выплат' => 'Вывод средств',
             'поддержка' => 'Поддержка',
 
@@ -28,7 +34,7 @@ if($post_type == 'online_casino' || $post_type == 'news' || $post_type == 'faq_a
         ],
         'providers_list' => [
             'label' => 'Провайдеры', 
-            'data' => 'provajdery', 
+            'data' => 'providers', 
             'post_type' => 'providers'
         ],
         'langs' => [
@@ -37,7 +43,7 @@ if($post_type == 'online_casino' || $post_type == 'news' || $post_type == 'faq_a
         ],
         'payment_list' => [
             'label' => 'Платежи', 
-            'data' => 'способы_вывода', 
+            'data' => 'payment_way', 
             'post_type' => 'platezhnie_sistemi'
         ],
         // 'janrs' => ['label' => 'Жанры', 'data' => 'janr'],
@@ -59,19 +65,19 @@ if($post_type == 'online_casino' || $post_type == 'news' || $post_type == 'faq_a
     ];
 }elseif($post_type == 'providers'){
     $content_sections = [
-        'logo_url' => 'логотип_без_фона',
+        'logo_url' => 'logo',
         'bonus' => 'banner',
         'rates' => [
-            'основано' => 'Основано',
+            'based_on' => 'Основано',
 
             // 'лицензия' => 'Лицензия',
-            // 'минимальная_сумма_депозита' => 'Мин. депозит',
-            // 'лимиты_на_вывод' => 'Мин. вывод',
+            // 'min_deposit' => 'Мин. депозит',
+            // 'withdraw_limits' => 'Мин. вывод',
             // 'скорость_выплат' => 'Вывод средств',
             // 'поддержка' => 'Поддержка',
 
             'разработано_игр' => 'Разработано игр',
-            'владелец' => 'Владелец',
+            'owner' => 'Владелец',
             'штаб-квартира' => 'Штаб-квартира',
 
             // 'минимальная_ставка' => 'Мин. ставка',
@@ -82,7 +88,7 @@ if($post_type == 'online_casino' || $post_type == 'news' || $post_type == 'faq_a
         ],
         // 'providers_list' => [
         //     'label' => 'Провайдеры', 
-        //     'data' => 'provajdery', 
+        //     'data' => 'providers', 
         //     'post_type' => 'providers'
         // ],
         // 'langs' => [
@@ -91,7 +97,7 @@ if($post_type == 'online_casino' || $post_type == 'news' || $post_type == 'faq_a
         // ],
         // 'payment_list' => [
         //     'label' => 'Платежи', 
-        //     'data' => 'способы_вывода', 
+        //     'data' => 'payment_way', 
         //     'post_type' => 'platezhnie_sistemi'
         // ],
         'janrs' => [
@@ -120,14 +126,14 @@ if($post_type == 'online_casino' || $post_type == 'news' || $post_type == 'faq_a
     ];
 }elseif($post_type == 'free_games'){
     $content_sections = [
-        'logo_url' => 'логотип_без_фона',
+        'logo_url' => 'logo',
         'bonus' => 'баннер_для_пк',
         'rates' => [
             // 'основано' => 'Основано',
 
             // 'лицензия' => 'Лицензия',
-            // 'минимальная_сумма_депозита' => 'Мин. депозит',
-            // 'лимиты_на_вывод' => 'Мин. вывод',
+            // 'min_deposit' => 'Мин. депозит',
+            // 'withdraw_limits' => 'Мин. вывод',
             // 'скорость_выплат' => 'Вывод средств',
             // 'поддержка' => 'Поддержка',
 
@@ -143,7 +149,7 @@ if($post_type == 'online_casino' || $post_type == 'news' || $post_type == 'faq_a
         ],
         'providers_list' => [
             'label' => 'Провайдеры', 
-            'data' => 'provajdery', 
+            'data' => 'providers', 
             'post_type' => 'providers'
         ],
         // 'langs' => [
@@ -152,7 +158,7 @@ if($post_type == 'online_casino' || $post_type == 'news' || $post_type == 'faq_a
         // ],
         // 'payment_list' => [
         //     'label' => 'Платежи', 
-        //     'data' => 'способы_вывода', 
+        //     'data' => 'payment_way', 
         //     'post_type' => 'platezhnie_sistemi'
         // ],
         // 'janrs' => [
@@ -187,14 +193,14 @@ if($post_type == 'online_casino' || $post_type == 'news' || $post_type == 'faq_a
     ];
 }elseif($post_type == 'partnyorki'){
     $content_sections = [
-        'logo_url' => 'логотип_без_фона',
+        'logo_url' => 'logo',
         'bonus' => 'баннер_для_пк',
         'rates' => [
-            'основано' => 'Основано',
+            'based_on' => 'Основано',
 
             // 'лицензия' => 'Лицензия',
-            // 'минимальная_сумма_депозита' => 'Мин. депозит',
-            // 'лимиты_на_вывод' => 'Мин. вывод',
+            // 'min_deposit' => 'Мин. депозит',
+            // 'withdraw_limits' => 'Мин. вывод',
             // 'скорость_выплат' => 'Вывод средств',
             // 'поддержка' => 'Поддержка',
 
@@ -213,7 +219,7 @@ if($post_type == 'online_casino' || $post_type == 'news' || $post_type == 'faq_a
         ],
         // 'providers_list' => [
         //     'label' => 'Провайдеры', 
-        //     'data' => 'provajdery', 
+        //     'data' => 'providers', 
         //     'post_type' => 'providers'
         // ],
         // 'langs' => [
@@ -222,7 +228,7 @@ if($post_type == 'online_casino' || $post_type == 'news' || $post_type == 'faq_a
         // ],
         // 'payment_list' => [
         //     'label' => 'Платежи', 
-        //     'data' => 'способы_вывода', 
+        //     'data' => 'payment_way', 
         //     'post_type' => 'platezhnie_sistemi'
         // ],
         // 'janrs' => [
@@ -277,9 +283,9 @@ if($post_type == 'online_casino' || $post_type == 'news' || $post_type == 'faq_a
 //         'владелец' => 'Владелец',
 //         'штаб-квартира' => 'Штаб-квартира',
 //     ],
-//     'providers_list' => ['label' => 'Провайдеры', 'data' => 'provajdery', 'post_type' => 'providers'],
+//     'providers_list' => ['label' => 'Провайдеры', 'data' => 'providers', 'post_type' => 'providers'],
 //     'langs' => ['label' => 'Языки интерфейса', 'data' => 'язык_сокращенный'],
-//     'payment_list' => ['label' => 'Платежи', 'data' => 'способы_вывода', 'post_type' => 'platezhnie_sistemi'],
+//     'payment_list' => ['label' => 'Платежи', 'data' => 'payment_way', 'post_type' => 'platezhnie_sistemi'],
 //     // 'janrs' => ['label' => 'Жанры', 'data' => 'janr'],
 //     // 'game_types' => ['label' => 'Виды игр', 'data' => 'game_types'],
 //     // 'exit_date' => ['label' => 'Дата выхода', 'data' => 'дата_выхода'],
@@ -295,23 +301,33 @@ if($post_type == 'online_casino' || $post_type == 'news' || $post_type == 'faq_a
 //             'link' => '/freegames'
 //         ],
 //     ],
-//     'logo_url' => 'логотип_без_фона',
+//     'logo_url' => 'logo',
 //     'bonus' => 'banner',
 // ];
 
 // Получаем значения для каждого из разделов контента
-$providers_list = array_filter(explode(',', get_field($content_sections['providers_list']['data'], $post_id) ?? ''));
-$payment_data = get_field($content_sections['payment_list']['data']);
-$payment_list = $payment_data ? array_map(fn($item) => $item->post_title, $payment_data) : [];
+// Проверка существования ключа 'payment_list' и обработка данных
+if (isset($content_sections['payment_list'])) {
+    $payment_data = get_field($content_sections['payment_list']['data'], $post_id);
+    // Если данные присутствуют, формируем список постов
+    $payment_list = $payment_data ? array_map(fn($item) => $item->post_title, $payment_data) : [];
+} else {
+    // Если ключа нет, присваиваем пустой массив
+    $payment_list = [];
+}
 
-
-$logo_url = get_field($content_sections['logo_url'], $post_id) ?: ''; // Получаем логотип
-$bonus = get_field($content_sections['bonus'], $post_id) ?: '';
-$promo_code = get_field('promo', $post_id) ?: 'LUDOBZOR';
-$promo_photo = get_field($content_sections['promo_photo'], $post_id) ?: '';
-$rates = $content_sections['rates'] ?? [];
-$buttons = $content_sections['buttons'] ?? [];
-$langs = get_field($content_sections['langs']['data']);
+// Получаем другие поля
+$providers_list = isset($content_sections['providers_list']['data'], $post_id) && is_array($providers = get_field($content_sections['providers_list']['data'], $post_id)) 
+            ? array_map(fn($provider) => $provider->post_title, $providers)
+            : [];
+$logo_url = get_field($content_sections['logo_url'] ?? '', $post_id) ?: ''; // Логотип
+$bonus = get_field($content_sections['bonus'] ?? '', $post_id) ?: ''; // Бонус
+$promo_code = get_field('promo', $post_id) ?: 'LUDOBZOR'; // Промокод
+$promo_photo_key = $content_sections['promo_photo'] ?? null; // Ключ promo_photo
+$promo_photo = $promo_photo_key ? get_field($promo_photo_key, $post_id) : ''; // Фото
+$rates = $content_sections['rates'] ?? []; // rates, если есть
+$buttons = $content_sections['buttons'] ?? []; // buttons, если есть
+$langs = isset($content_sections['langs']) ? get_field($content_sections['langs']['data'], $post_id) : [];
 $langs = $langs ? implode(', ', array_map(fn($term) => $term->name, $langs)) : '';
 
 //$langs = implode(', ', array_map(fn($item) => $item->post_title, get_field($content_sections['langs']['data'])));
@@ -333,7 +349,7 @@ $langs = $langs ? implode(', ', array_map(fn($term) => $term->name, $langs)) : '
             <?php if ($bonus): ?>
             <div class="oc__bonus copy_promocode_link" id="get_promo"
                 data-image-src="<?php echo esc_url($promo_photo); ?>"
-                data-promo-code="<?php echo esc_html($promo_code); ?>"
+                data-promo-code="<?php echo esc_html($promo_code ?: 'LUDOBZOR'); ?>"
                 style="background: url(<?php echo esc_url($bonus); ?>) 50% 50% no-repeat; background-size: cover;">
             </div>
             <?php endif; 
@@ -369,7 +385,6 @@ $langs = $langs ? implode(', ', array_map(fn($term) => $term->name, $langs)) : '
                     <div class="rate__progress large">
                         <div class="rate__inset"><?php 
                             $field_value = get_field($field, $post_id);
-
                             if (is_array($field_value)) {
 
                                 $term_names = array_map(function($term) {

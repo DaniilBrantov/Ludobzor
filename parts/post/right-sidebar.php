@@ -1,18 +1,19 @@
 <?php
-$game_type_names = implode(', ', array_column(get_field('виды_игр') ?: [], 'name'));
+$game_type_names = implode(', ', array_column(get_field('game_types') ?: [], 'name'));
 
-$provajdery_list = array_filter(array_map('trim', explode(',', get_field('provajdery') ?? '')));
-$provajdery_links = [];
+$providers_value = get_field('providers');
+$providers_list = is_string($providers_value) ? array_filter(array_map('trim', explode(',', $providers_value))) : [];
+$providers_links = [];
 
-if ($provajdery_list) {
+if ($providers_list) {
     $query = new WP_Query([
         'post_type' => 'providers',
         'posts_per_page' => -1,
-        'title__in' => $provajdery_list,
+        'title__in' => $providers_list,
     ]);
     while ($query->have_posts()) {
         $query->the_post();
-        $provajdery_links[] = '<a href="' . esc_url(get_permalink()) . '" target="_blank">' . esc_html(get_the_title()) . '</a>';
+        $providers_links[] = '<a href="' . esc_url(get_permalink()) . '" target="_blank">' . esc_html(get_the_title()) . '</a>';
     }
     wp_reset_postdata();
 }
@@ -43,6 +44,10 @@ function getSvg() {
 }
 
 function getTermNames($terms, $property = 'name') {
+    if (!is_array($terms)) {
+        return ''; // Возвращаем пустую строку или обработайте ошибку как нужно
+    }
+    
     return implode(', ', array_map(fn($term) => $term->$property ?? '', $terms));
 }
 
@@ -51,11 +56,11 @@ foreach ($sidebars as $sidebar) {
     foreach ($sidebar['args'] as $key => $label) {
         $value = '';
         switch ($key) {
-            case 'виды_игр':
+            case 'game_types':
                 $value = $game_type_names;
                 break;
-            case 'provajdery':
-                $value = implode(', ', $provajdery_links);
+            case 'providers':
+                $value = implode(', ', $providers_links);
                 break;
             case 'мобильная_версия':
             case 'live_chat_podderzhka':
@@ -65,8 +70,8 @@ foreach ($sidebars as $sidebar) {
             case 'запрещенные_страны':
                 $value = getTermNames(get_field($key) ?: []) ?: 'Нет ограничений';
                 break;
-            case 'жанр':
-            case 'платформы':
+            case 'janr':
+            case 'platforms':
                 $value = getTermNames(get_field($key) ?: []);
                 break;
             default:
@@ -77,7 +82,7 @@ foreach ($sidebars as $sidebar) {
             $casinoInfo[] = [
                 'label' => $label,
                 'value' => $value,
-                'svg'   => in_array($key, ['лицензия', 'номер_лицензии']),
+                'svg'   => in_array($key, ['license', 'номер_лицензии']),
             ];
         }
     }

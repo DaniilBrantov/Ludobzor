@@ -3,7 +3,7 @@ $post_id = isset($post_id) ? $post_id : get_the_ID();
 
 ?>
 
-<div class="container disclamer disclamer12">
+<div  class="container disclamer disclamer12">
     <div class="row">
         <div class="col-md-12">
             <div class="bottTextIntro">

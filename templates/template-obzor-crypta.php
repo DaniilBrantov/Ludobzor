@@ -5,7 +5,7 @@ $args_data = [
     'cat_title' => 'Криптовалютные казино',
     'post_type' => 'online_casino',
     'posts_per_page' => 12,
-    'post_image' => 'логотип_без_фона',
+    'post_image' => 'logo',
     'cat_template' => 'promo-more',
     'meta_query' => [
         [

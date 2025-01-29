@@ -1,21 +1,29 @@
 <?php
-
-$post_types_query = [];
-foreach ($params['post_type_args'] as $post_type) {
-    $post_types_query[$post_type['data-r']] = new WP_Query([
-        'post_type'      => $post_type['post_type'],
-        'posts_per_page' => $post_type['posts_per_page'],
-    ]);
+// Check if 'post_type_args' exists and is an array
+if (isset($params['post_type_args']) && is_array($params['post_type_args'])) {
+    $post_types_query = [];
+    foreach ($params['post_type_args'] as $post_type) {
+        $post_types_query[$post_type['data-r']] = new WP_Query([
+            'post_type'      => $post_type['post_type'],
+            'posts_per_page' => $post_type['posts_per_page'],
+        ]);
+    }
+} else {
+    $post_types_query = [];
 }
 
-$terms_data = [];
-foreach ($params['taxonomies'] as $taxonomy) {
-    $terms_data[$taxonomy['id']] = get_terms([
-        'taxonomy'   => $taxonomy['taxonomy'],
-        'hide_empty' => $taxonomy['hide_empty'],
-    ]);
+// Check if 'taxonomies' exists and is an array
+if (isset($params['taxonomies']) && is_array($params['taxonomies'])) {
+    $terms_data = [];
+    foreach ($params['taxonomies'] as $taxonomy) {
+        $terms_data[$taxonomy['id']] = get_terms([
+            'taxonomy'   => $taxonomy['taxonomy'],
+            'hide_empty' => $taxonomy['hide_empty'],
+        ]);
+    }
+} else {
+    $terms_data = [];
 }
-
 
 $menu_items = [];
 if (!empty($params['filter_menu'])) {
@@ -42,18 +50,27 @@ if (!empty($params['filter_menu'])) {
                             <?php echo esc_html($parent_title); ?>
                         </a>
                     </li>
-                <?php } ?>
-                    <?php if (!empty($menu_items)) : ?>
+                <?php } 
+                
+                ?>
+                    <?php if (!empty($menu_items)) : 
+                        ?>
                     <?php foreach ($menu_items as $index => $menu_item) : ?>
-                        <?php if (isset($params['page_args'][$index])) : ?>
+                        <?php //if (isset($params['page_args'][$index])) : 
+                            ?>
                             <li><a href="<?php echo esc_url($menu_item->url); ?>" class="provider-slidetoggle-listt">
-                                <?php echo esc_html($params['page_args'][$index]['menu_title']); ?>
+                                <?php 
+                                $title = !empty($menu_item->post_title) ? esc_html($menu_item->post_title) : esc_html($menu_item->post_excerpt);
+                                echo $title; 
+                                ?>
                             </a></li>
-                        <?php endif; ?>
+                        <?php //endif; ?>
                     <?php endforeach; ?>
-                    <?php else : ?>
-                        <?php foreach ($params['page_args'] as $page) : ?>
-                            <li><a href="<?php echo sendToPage($page['link']); ?>" class="provider-slidetoggle-listt"><?php echo esc_html($page['menu_title']); ?></a></li>
+                    <?php else : 
+                        ?>
+                        <?php foreach ($params['page_args'] as $page) : 
+                            ?>
+                            <li><a href="<?php echo ($page['link']); ?>" class="provider-slidetoggle-listt"><?php echo esc_html($page['menu_title']); ?></a></li>
                         <?php endforeach; ?>
                     <?php endif; ?>
 
@@ -63,7 +80,7 @@ if (!empty($params['filter_menu'])) {
                         <?php endif; ?>
                     <?php endforeach; ?>
 
-                    <?php foreach ($params['taxonomies'] as $taxonomy) : ?>
+                    <?php foreach ($terms_data as $taxonomy) : ?>
                         <li><a data-r="<?php echo esc_attr($taxonomy['id']); ?>" class="provider-slidetoggle-listt"><?php echo esc_html($taxonomy['menu_title']); ?></a></li>
                     <?php endforeach; ?>
                 </ul>
@@ -71,6 +88,3 @@ if (!empty($params['filter_menu'])) {
         </div>
     </div>
 </div>
-
-
-

@@ -5,7 +5,7 @@ $args_data = [
     'cat_title' => 'Платежные системы ',
     'post_type' => 'platezhnie_sistemi',
     'posts_per_page' => 12,
-    'post_image' => 'логотип_без_фона',
+    'post_image' => 'logo',
     'top_filter' => true,
 ];
 

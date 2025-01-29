@@ -9,7 +9,7 @@
                     +
                     </i>
                 </span>
-                <ul style="display: none;" class="footer__submenu">
+                <ul class="footer__submenu">
                     <?php if (isset($section['links'])): ?>
                     <?php foreach ($section['links'] as $link): ?>
                     <li>

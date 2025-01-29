@@ -4,7 +4,7 @@ require_once get_theme_file_path('parts/part-main-casino.php');
         $params = [
             'taxonomies' => [
                 [
-                    'taxonomy' => 'view-of-game',
+                    'taxonomy' => 'game_types',
                     'hide_empty' => false,
                     'id' => 'vgames',
                     'menu_title' => 'Виды игр',

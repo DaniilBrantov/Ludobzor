@@ -93,7 +93,7 @@ $cat_data = $all_categories[$selected_category];
         <ul class="search__tabs">
             <?php
                 foreach ($available_categories as $cat_id => $cat_title) {
-                    $url = "/search/?q=" . urlencode(get_search_query()) . "&cat=" . $cat_id;
+                    $url = "/?s=" . urlencode(get_search_query()) . "&cat=" . $cat_id;
                     $active_class = ($cat_id === $selected_category) ? 'active' : '';
                     echo "<li><a href='$url' class='catcat item $active_class' id='s_$cat_id'>$cat_title</a></li>";
                 }

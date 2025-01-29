@@ -84,7 +84,7 @@ function ajax_search_handler() {
                 'link' => get_permalink(),
                 'image' => $image_field ? $image_field : get_the_post_thumbnail_url(get_the_ID(), 'thumbnail'), // Если ACF-изображение пусто, используем стандартное изображение
                 'type' => $post_type,
-                'category' => $category_data, // Добавляем данные категории
+                'category' => $category_data,
             ];
 
             // Дополнительные данные для типа "online_casino"
@@ -102,7 +102,7 @@ function ajax_search_handler() {
         // Ответ с результатами
         wp_send_json_success([
             'results' => $results,
-            'showAllLink' => 'search/?q=' . urlencode($query)  // Ссылка для показа всех результатов
+            'showAllLink' => '/?s=' . urlencode($query)  // Ссылка для показа всех результатов
         ]);
     } else {
         // Если ничего не найдено, возвращаем ошибку

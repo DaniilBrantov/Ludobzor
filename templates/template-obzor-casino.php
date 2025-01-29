@@ -5,13 +5,13 @@ $args_data = [
     'cat_title' => 'Обзор Казино',
     'post_type' => 'online_casino',
     'posts_per_page' => 12,
-    'post_image' => 'логотип_без_фона',
+    'post_image' => 'logo',
     'cat_template' => 'promo-more'
 ];
 
 $common_filters = [
     'license_exists' => [
-        'key'     => 'лицензия',
+        'key'     => 'license',
         'value'   => '',
         'compare' => '!=',
     ],
@@ -52,10 +52,10 @@ $params = [
         ],
         [
             'menu_title' => 'Новинки',
-            'link'       => 'newcasic',
+            'link'       => 'novinka-v-kazino',
             'meta_query' => [
                 [
-                    'key'     => 'основано',
+                    'key'     => 'based_on',
                     'compare' => 'EXISTS',
                 ],
             ],
@@ -64,7 +64,7 @@ $params = [
         ],
         [
             'menu_title' => 'Криптовалютное',
-            'link'       => 'crypta',
+            'link'       => 'chem-otlichaetsya-kriptovalyutnoe-kazino-ot-obychnogo',
             'meta_query' => [
                 [
                     'key'     => 'криптовалютное_казино',
@@ -75,7 +75,7 @@ $params = [
         ],
         [
             'menu_title' => 'Для хайроллеров',
-            'link'       => 'hayroller',
+            'link'       => 'hajrollery-v-kazino',
             'meta_query' => [
                 $common_filters['rating_above'],
             ],
@@ -84,7 +84,7 @@ $params = [
         ],
         [
             'menu_title' => 'Моментальный вывод',
-            'link'       => 'momentpay',
+            'link'       => 'momentalnyj-vyvod-v-kazino',
             'meta_query' => [
                 [
                     'key'     => 'скорость_выплат',
@@ -95,7 +95,7 @@ $params = [
         ],
         [
             'menu_title' => 'Надёжные',
-            'link'       => 'reliable',
+            'link'       => 'chto-takoe-nadezhnoe-kazino',
             'meta_query' => [
                 $common_filters['license_exists'],
                 $common_filters['license_number_exists'],
@@ -105,13 +105,13 @@ $params = [
         ],
         [
             'menu_title' => 'Минимальная ставка',
-            'link'       => 'minstavka',
+            'link'       => 'minimalnaya-stavka-v-kazino',
             'meta_query' => [
                 $common_filters['license_exists'],
                 $common_filters['license_number_exists'],
                 $common_filters['rating_above'],
                 [
-                    'key'     => 'минимальная_сумма_депозита',
+                    'key'     => 'min_deposit',
                     'compare' => 'EXISTS',
                 ],
             ],
@@ -120,7 +120,7 @@ $params = [
         ],
         [
             'menu_title' => 'Чёрный список',
-            'link'       => 'blacklist',
+            'link'       => 'chyornyj-spisok-v-kazino',
             'meta_query' => [
                 [
                     'key'     => 'черный_список',

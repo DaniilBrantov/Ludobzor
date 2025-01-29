@@ -6,7 +6,7 @@
         $params = [
             'taxonomies' => [
                 [
-                    'taxonomy' => 'view-of-game',
+                    'taxonomy' => 'game_types',
                     'hide_empty' => false,
                     'id' => 'vgames',
                     'menu_title' => 'Виды игр',
@@ -48,6 +48,7 @@
             'post_type' => 'free_games',
             'posts_per_page' => 12,
             'post_image' => 'photo',
+            'cat_template' => 'title'
         ];
 
         $button = [
@@ -62,7 +63,7 @@
 
         $args_data = [
             'cat_title' => 'Лучшие онлайн-казино',
-            'cat_link' => '/obzory/reviews/',
+            'cat_link' => '/obzor-casino/',
             'post_type' => 'online_casino',
             'posts_per_page' => 20,
             'post_image' => 'photo',
@@ -70,7 +71,7 @@
 
         $button = [
             'title' => 'Все казино',
-            'link' => '/obzory/reviews/',
+            'link' => '/obzor-casino/',
         ];
 
         require( get_theme_file_path('/parts/part-carousel.php') ); 

@@ -6,13 +6,13 @@
                 Обзор
             </span>
         </a>
-        <a class="casino-nav-i" href="/s/bonusy-vodka-casino/">
+        <a class="casino-nav-i" href="/bonusy-vodka-casino/">
             <img width="36" height="66" src="<?php echo imgName("casino-bonusy.svg"); ?>" alt="">
             <span>
                 Бонусы
             </span>
         </a>
-        <a class="casino-nav-i" href="/s/vodka-onlayn-kazino-otzyvy/">
+        <a class="casino-nav-i" href="/otzyvy-<?php echo esc_html($post->post_name); ?>">
             <img width="36" height="66" src="<?php echo imgName("casino-help.svg"); ?>" alt="">
             <span>
                 Отзывы

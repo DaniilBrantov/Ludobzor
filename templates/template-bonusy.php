@@ -4,74 +4,42 @@ $args_data = [
     'cat_title' => 'Лучшие бонусы от онлайн-казино',
     'post_type' => 'online_casino',
     'posts_per_page' => 12,
-    'post_image' => 'логотип_без_фона',
+    'post_image' => 'logo',
     'top_filter' => true,
 ];
 
 
-
-$common_filters = [
-    'welcome' => [
-        'key'     => 'tip_bonusa',
-        'value'   => 'Приветственный бонус',
-        'compare' => '==',
-    ],
-    'free-spins' => [
-        'key'     => 'tip_bonusa',
-        'value'   => 'Фриспины',
-        'compare' => '==',
-    ],
-    'cashback' => [
-        'key'     => 'tip_bonusa',
-        'value'   => 'Кэшбэк',
-        'compare' => '==',
-    ],
-    'bookmakers-bonuses' => [
-        'key'     => 'tip_bonusa',
-        'value'   => 'Бонусы от букмекеров',
-        'compare' => '==',
-    ],
-];
-
-$common_orderby = [
-    'orderby' => 'meta_value_num',
-    'order'   => 'DESC',
-];
-
 $params = [
     'filter_menu' => 'bonusy-filter-menu',
-    'page_args' => [
-        [
-            'menu_title' => 'Приветственный бонус',
-            'link'       => 'welcome',
-            'meta_query' => [
-                $common_filters['welcome']
-            ],
-        ],
-        [
-            'menu_title' => 'Фриспины',
-            'link'       => 'free-spins',
-            'meta_query' => [
-                $common_filters['free-spins']
-            ],
-        ],
-        [
-            'menu_title' => 'Кэшбэк',
-            'link'       => 'cashback',
-            'meta_query' => [
-                $common_filters['cashback']
-            ],
-        ],
-        [
-            'menu_title' => 'Бонусы от букмекеров',
-            'link'       => 'bookmakers-bonuses',
-            'meta_query' => [
-                $common_filters['bookmakers-bonuses']
-            ],
-        ],
-        
-    ],
+    'page_args'   => [],
 ];
+
+$pages = get_posts([
+    'post_type'   => 'page',
+    'post_status' => 'publish',
+    'numberposts' => -1, // Все страницы
+]);
+
+foreach ($pages as $page) {
+    // Получаем значение поля type_bonus
+    $type_bonus = get_field('type_bonus', $page->ID);
+    
+    if (!empty($type_bonus)) {
+        $params['page_args'][] = [
+            'menu_title' => $page->post_title,
+            'link'       => get_permalink($page),
+            'meta_query' => [
+                [
+                    'key'     => 'tip_bonusa',
+                    'value'   => $type_bonus,
+                    'compare' => '==',
+                ],
+            ],
+        ];
+    }
+}
+
+
 ?>
 
 <main>
@@ -100,11 +68,29 @@ $params = [
                     'promo' => 'promo',
                     'promo_desc' => 'описание_промокода',
                 ];
-                require( get_theme_file_path('/inc/filter/best-cat-posts.php') ); 
+                ?>
+                <div class="col-lg-4">
+                    <div class="sidebar-info">
+                        <div class="sidebar-info--wrapper">
+                            <div class="sidebar-info">
+                                <div class="sidebar-info--wrapper">
+                                    <div class="casino-all-info">
+                                          <?php
+                                            require( get_theme_file_path('/inc/filter/best-cat-posts.php') ); 
+                                          
+                                          ?>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<?php
+
 
                 require( get_theme_file_path('/parts/cat-content/cat-disclamer.php') ); 
                 
-
                 require( get_theme_file_path('/parts/cat-content/cat-text.php') ); 
         ?>
         </div>

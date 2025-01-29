@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+
   const closeAllElements = () => {
     document
       .querySelectorAll('.provider-slidetoggle-target')
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.provider-slidetoggle-listt').forEach((item) => {
     item.addEventListener('click', (event) => {
       event.preventDefault();
-
+      console.log(1);
       const targetId = 'lud_' + item.getAttribute('data-r');
       const targetElement = document.getElementById(targetId);
 

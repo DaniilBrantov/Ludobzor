@@ -26,7 +26,7 @@
             // Массив с заголовками и соответствующими типами постов
             $footer_sections = [
                 ['title' => 'Обзоры', 'links' => [
-                    ['href' => '/obzory/reviews/', 'label' => 'Обзор Казино'],
+                    ['href' => '/obzory/obzor-casino/', 'label' => 'Обзор Казино'],
                     ['href' => '/obzory/obzor-slotov/', 'label' => 'Обзор Слотов'],
                     ['href' => '/obzory/obzor-strimerov/', 'label' => 'Обзор Стримеров'],
                     ['href' => '/casino/', 'label' => 'Криптовалютные казино'],

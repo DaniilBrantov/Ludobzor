@@ -25,7 +25,7 @@ require get_theme_file_path('parts/card/post-card-bibi.php');
                     'cat_title' => 'Лучшие бонусы',
                     'post_type' => 'online_casino',
                     'posts_per_page' => 12,
-                    'post_image' => 'логотип_без_фона',
+                    'post_image' => 'logo',
                 ];
                 $params = false;
             ?>
@@ -52,7 +52,7 @@ require get_theme_file_path('parts/card/post-card-bibi.php');
     <?php
         $cat_posts = [
             ['Популярные игры', 'free_games', 4, 'photo', 'free_games'],
-            ['Похожие казино', 'online_casino', 6, 'логотип_без_фона', 'similar-posts']
+            ['Похожие казино', 'online_casino', 6, 'logo', 'similar-posts']
         ];
 
         foreach ($cat_posts as $cat_post) {

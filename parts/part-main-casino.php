@@ -8,14 +8,14 @@ if ($free_games_query->have_posts()) :
     echo '<div class="container block4"><div class="row">';
 
     while ($free_games_query->have_posts()) : $free_games_query->the_post();
-        $src = get_field('логотип_без_фона');
+        $src = get_field('logo');
         $modal_id = get_field('modal_id');
         $promocode = get_field('promo');
-        $modal_image = get_field('логотип_без_фона');
+        $modal_image = get_field('logo');
         $title = get_field('плашка_промо');
         $href = get_permalink();
         $alt = 'Скопировать промокод ' . $title; 
-
+        $promo_photo = get_field('promo_photo', $post->ID);
         ?>
         <div class="col angled-img2">
             <div>
@@ -24,9 +24,9 @@ if ($free_games_query->have_posts()) :
                 </a>
                 <div>
                     <div><?= esc_html($title); ?></div>
-                        <div class="copy_promocode_link" id="get_promo" data-bs-toggle="modal" data-r="<?= esc_attr($promocode); ?>"
-                                    data-image-src="<?php echo esc_url(get_field('promo_photo', $post_id)); ?>"
-                                    data-promo-code="<?php echo esc_html($promocode); ?>">
+                        <div class="copy_promocode_link" id="get_promo" data-bs-toggle="modal"
+                                    data-image-src="<?php echo ($promo_photo); ?>"
+                                    data-promo-code="<?php echo esc_html($promocode ?: 'LUDOBZOR'); ?>">
                                     <span> Промокод </span>
                                 </div>
                         

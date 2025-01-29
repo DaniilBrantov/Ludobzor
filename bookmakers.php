@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: bookmakers
+ * Template Name: temp-bookmakers
  *
  
  */

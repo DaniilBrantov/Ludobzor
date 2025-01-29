@@ -16,6 +16,7 @@
                 <div class="youplay-textarea" style="margin-bottom: 0;">
                     <textarea id="comment" placeholder="Ваше сообщение" name="comment" rows="5" aria-required="true"></textarea>
                 </div>
+                <input type="hidden" name="nonce" value="<?php echo wp_create_nonce('feedback_form_nonce'); ?>">
                 <div class="errrrr"></div>
                 <p class="form-submit"><button type="submit" id="submit"><span>Отправить</span></button></p>
             </form>

@@ -1,3 +1,4 @@
+
 <nav>
     <ul itemscope itemtype="<?= $ulItemtype; ?>" class="nav navbar-nav">
         <li class="mobileOnlyy">
@@ -7,8 +8,8 @@
             <a href="javascript:;" class="closeMenu"></a>
         </li>
         <li class="mobileOnlyy">
-            <form role="search" method="get" class="search-form" action="<?= $searchAction; ?>">
-                <input class="sb-search-input" placeholder="" type="search" id="search-mob" value="" name="q"
+            <form role="search" method="get" class="search-form" action="">
+                <input class="sb-search-input" placeholder="" type="search" id="search-mob" value="" name="s"
                     autocomplete="off">
                 <input class="sb-search-submit" type="submit" value="">
                 <span class="sb-icon-search sb-icon-search-span">
@@ -57,3 +58,4 @@
         </li>
     </ul>
 </nav>
+<a href="javascript:;" class="gamburger mobile"><span>меню</span></a>

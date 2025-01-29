@@ -1,57 +1,53 @@
-jQuery(document).ready(function ($) {
+document.addEventListener('DOMContentLoaded', function () {
   let isSubmitting = false;
 
-  $('body').on('submit', '#commentform', function (e) {
-    e.preventDefault();
+  const commentForm = document.getElementById('commentform');
+  if (commentForm) {
+    commentForm.addEventListener('submit', function (e) {
+      e.preventDefault();
 
-    if (isSubmitting) return;
+      if (isSubmitting) return;
 
-    isSubmitting = true;
+      isSubmitting = true;
 
-    const fio = $('input[name="fio"]').val();
-    const email = $('input[name="email"]').val();
-    const comment = $('textarea[name="comment"]').val();
+      const fio = document.querySelector('input[name="fio"]').value;
+      const email = document.querySelector('input[name="email"]').value;
+      const comment = document.querySelector('textarea[name="comment"]').value;
 
-    const fioRegex = /^[A-Za-zА-Яа-яЁё\s]+$/;
-    if (!fioRegex.test(fio)) {
-      $('.errrrr').html(
-        '<p style="color: red;">Пожалуйста, введите корректное имя (только буквы и пробелы).</p>'
-      );
-      isSubmitting = false;
-      return;
-    }
+      const fioRegex = /^[A-Za-zА-Яа-яЁё\s]+$/;
+      const errorContainer = document.querySelector('.errrrr');
+      
+      if (!fioRegex.test(fio)) {
+        errorContainer.innerHTML = '<p style="color: red;">Пожалуйста, введите корректное имя (только буквы и пробелы).</p>';
+        isSubmitting = false;
+        return;
+      }
 
-    const formData = {
-      action: 'handle_feedback_form',
-      nonce: feedbackForm.nonce,
-      fio: fio,
-      email: email,
-      comment: comment,
-    };
+      const formData = new FormData();
+      formData.append('action', 'handle_feedback_form');
+      formData.append('nonce', feedbackForm.nonce);
+      formData.append('fio', fio);
+      formData.append('email', email);
+      formData.append('comment', comment);
 
-    $.ajax({
-      url: feedbackForm.ajax_url,
-      type: 'POST',
-      data: formData,
-      success: function (response) {
-        if (response.success) {
-          $('.errrrr').html(
-            `<p style="color: green;">${response.data.message}</p>`
-          );
-          $('#commentform')[0].reset();
+      fetch(feedbackForm.ajax_url, {
+        method: 'POST',
+        body: formData,
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          errorContainer.innerHTML = `<p style="color: green;">${data.data.message}</p>`;
+          commentForm.reset();
         } else {
-          $('.errrrr').html(
-            `<p style="color: red;">${response.data.message}</p>`
-          );
+          errorContainer.innerHTML = `<p style="color: red;">${data.data.message}</p>`;
         }
         isSubmitting = false;
-      },
-      error: function () {
-        $('.errrrr').html(
-          '<p style="color: red;">Произошла ошибка. Попробуйте позже.</p>'
-        );
+      })
+      .catch(() => {
+        errorContainer.innerHTML = '<p style="color: red;">Произошла ошибка. Попробуйте позже.</p>';
         isSubmitting = false;
-      },
+      });
     });
-  });
+  }
 });

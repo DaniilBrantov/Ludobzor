@@ -5,7 +5,7 @@ $args_data = [
     'cat_title' => 'Партнерские программы онлайн казино',
     'post_type' => 'partnyorki',
     'posts_per_page' => 12,
-    'post_image' => 'логотип_без_фона',
+    'post_image' => 'logo',
     'cat_template' => 'more'
 ];
 

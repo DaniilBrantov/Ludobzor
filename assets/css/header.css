@@ -651,7 +651,6 @@
   color: #fff;
 }
 main {
-  background: url('/local/templates/ludobzor/assets/youplay/css/../../images/newdesign/stars.webp');
   background-position: top center;
   background-repeat: no-repeat;
 }
@@ -2624,7 +2623,6 @@ font.text.ttt .q6:after {
 font.text.ttt .q4:before,
 font.text.ttt .q6:before {
   content: '';
-  background: url('/local/templates/ludobzor/assets/youplay/css/../../../../../../bitrix/templates/gvozdevsoft_unpro_color_1/assets/images/newdesign/str_newdesignnn.png');
   display: inline-block;
   width: 26px;
   height: 8px;
@@ -2667,7 +2665,6 @@ font.text.ttt .q8 {
 }
 font.text.ttt .q8:after {
   content: '';
-  background: url('/local/templates/ludobzor/assets/youplay/css/../../../../../../bitrix/templates/gvozdevsoft_unpro_color_1/assets/images/newdesign/str_newdesignnn.png');
   display: inline-block;
   width: 26px;
   height: 8px;
@@ -3454,7 +3451,6 @@ a.logo_ludobzor img {
   width: 100%;
   display: block;
   height: 66px;
-  background: url(/images/contacts/info__logo.svg) center center no-repeat;
   background-size: 100% 100%;
   display: flex;
   align-items: center;
@@ -5123,14 +5119,7 @@ button {
   overflow-y: auto;
   color: #595959;
   font-size: 0.9rem;
-  clip-path: polygon(
-    0px 40px,
-    0px 550px,
-    calc(100% - 40px) 522px,
-    100% 482px,
-    100% 0px,
-    40px 0px
-  );
+  clip-path: polygon(0px 40px, 0px 550px, 800px 550px, 100% 482px, 100% 0px, 40px 0px);
 }
 .red-modality textarea {
   background: #1a1c29;
@@ -16637,7 +16626,6 @@ fieldset:disabled .btn {
     display: none !important;
   }
 }
-/*# sourceMappingURL=bootstrap.min.css.map */
 
 /* /local/templates/ludobzor/assets/youplay/css/newdesign.css */
 * {
@@ -16698,7 +16686,6 @@ body {
   min-height: 100%;
   color: #fff;
   overflow-x: hidden;
-  background-image: url('/local/templates/ludobzor/assets/youplay/css/../../images/newdesign/fon2.webp');
   padding-top: 90px;
 }
 .align-center {
@@ -17482,7 +17469,6 @@ header .container .row {
   color: #fff;
 }
 main {
-  background: url('/local/templates/ludobzor/assets/youplay/css/../../images/newdesign/stars.webp');
   background-position: top center;
   background-repeat: no-repeat;
 }
@@ -19433,7 +19419,6 @@ font.text.ttt .q6:after {
 font.text.ttt .q4:before,
 font.text.ttt .q6:before {
   content: '';
-  background: url('/local/templates/ludobzor/assets/youplay/css/../../../../../../bitrix/templates/gvozdevsoft_unpro_color_1/assets/images/newdesign/str_newdesignnn.png');
   display: inline-block;
   width: 26px;
   height: 8px;
@@ -19476,7 +19461,6 @@ font.text.ttt .q8 {
 }
 font.text.ttt .q8:after {
   content: '';
-  background: url('/local/templates/ludobzor/assets/youplay/css/../../../../../../bitrix/templates/gvozdevsoft_unpro_color_1/assets/images/newdesign/str_newdesignnn.png');
   display: inline-block;
   width: 26px;
   height: 8px;
@@ -20260,7 +20244,6 @@ a.logo_ludobzor img {
   width: 100%;
   display: block;
   height: 66px;
-  background: url(/images/contacts/info__logo.svg) center center no-repeat;
   background-size: 100% 100%;
   display: flex;
   align-items: center;
@@ -23588,7 +23571,6 @@ hr.main-hr {
   justify-content: center;
 }
 .oc__logo:after {
-  content: url('/local/templates/ludobzor/components/bitrix/news.list/raiting_casinos_list/images/logo.svg');
   width: 100%;
   height: 100%;
   position: absolute;
@@ -33404,7 +33386,6 @@ fieldset:disabled .btn {
     display: none !important;
   }
 }
-/*# sourceMappingURL=bootstrap.min.css.map */
 
 /* /local/templates/ludobzor/assets/youplay/css/newdesign.css */
 * {
@@ -33465,7 +33446,6 @@ body {
   min-height: 100%;
   color: #fff;
   overflow-x: hidden;
-  background-image: url('/local/templates/ludobzor/assets/youplay/css/../../images/newdesign/fon2.webp');
   padding-top: 90px;
 }
 .align-center {
@@ -34249,7 +34229,6 @@ header .container .row {
   color: #fff;
 }
 main {
-  background: url('/local/templates/ludobzor/assets/youplay/css/../../images/newdesign/stars.webp');
   background-position: top center;
   background-repeat: no-repeat;
 }
@@ -36202,7 +36181,6 @@ font.text.ttt .q6:after {
 font.text.ttt .q4:before,
 font.text.ttt .q6:before {
   content: '';
-  background: url('/local/templates/ludobzor/assets/youplay/css/../../../../../../bitrix/templates/gvozdevsoft_unpro_color_1/assets/images/newdesign/str_newdesignnn.png');
   display: inline-block;
   width: 26px;
   height: 8px;
@@ -36245,7 +36223,6 @@ font.text.ttt .q8 {
 }
 font.text.ttt .q8:after {
   content: '';
-  background: url('/local/templates/ludobzor/assets/youplay/css/../../../../../../bitrix/templates/gvozdevsoft_unpro_color_1/assets/images/newdesign/str_newdesignnn.png');
   display: inline-block;
   width: 26px;
   height: 8px;
@@ -37029,7 +37006,6 @@ a.logo_ludobzor img {
   width: 100%;
   display: block;
   height: 66px;
-  background: url(/images/contacts/info__logo.svg) center center no-repeat;
   background-size: 100% 100%;
   display: flex;
   align-items: center;
@@ -37660,7 +37636,8 @@ a.logo_ludobzor img {
     padding-right: 0;
   }
   .reverse {
-    flex-direction: column-reverse;
+    display: flex;
+    flex-direction: column;
   }
   .col-lg-4 {
     margin-top: 20px;
@@ -38698,14 +38675,8 @@ button {
   overflow-y: auto;
   color: #595959;
   font-size: 0.9rem;
-  clip-path: polygon(
-    0px 40px,
-    0px 550px,
-    calc(100% - 40px) 522px,
-    100% 482px,
-    100% 0px,
-    40px 0px
-  );
+  clip-path: polygon(0px 40px, 0px 600px, 768px 593px, 99.88% 562px, 100% 0px, 40px 0px)
+
 }
 .red-modality textarea {
   background: #1a1c29;
@@ -40446,18 +40417,7 @@ hr.main-hr {
 .onlinecasino_item.onlineslot_item > div > div:last-child a {
   position: relative;
 }
-.onlinecasino_item.onlineslot_item > div > div:last-child a:before {
-  content: '';
-  width: 100%;
-  height: 0;
-  display: block;
-  background: linear-gradient(90deg, #404d9b 0%, #22c8fc 100%);
-  -o-transition: 0.6s ease;
-  transition: 0.6s ease;
-  position: absolute;
-  bottom: 0;
-  z-index: 1;
-}
+
 .onlinecasino_item.onlineslot_item > div > div:last-child a span:last-child {
   z-index: 2;
   position: relative;
@@ -40713,7 +40673,6 @@ hr.main-hr {
   height: 162px;
   text-align: center;
   border-bottom: 1px solid #212333;
-  background: url('/local/templates/ludobzor/components/bitrix/news/providers/bitrix/news.detail/.default/images/logo.svg');
   cursor: pointer;
 }
 .jolly-roger {
@@ -41091,7 +41050,6 @@ hr.main-hr {
   height: 162px;
   text-align: center;
   border-bottom: 1px solid #212333;
-  background: url('/local/templates/ludobzor/components/bitrix/news/online_casino/bitrix/news.detail/.default/images/logo.svg');
   cursor: pointer;
 }
 .jolly-roger {
@@ -41588,6 +41546,7 @@ hr.main-hr {
   .oc__header {
     flex-direction: column;
     align-items: center;
+    padding: 10px;
   }
   .oc__rates--item {
     width: 50%;
@@ -43751,3 +43710,164 @@ hr.main-hr {
   .ya-share2__icon {
   background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M20 11.794c0 4.304-3.517 7.794-7.855 7.794a7.87 7.87 0 01-3.796-.97L4 20l1.418-4.182a7.714 7.714 0 01-1.127-4.024C4.29 7.489 7.807 4 12.145 4S20 7.49 20 11.794zm-7.855-6.553c-3.641 0-6.603 2.94-6.603 6.553A6.48 6.48 0 006.8 15.636l-.825 2.433 2.537-.806a6.6 6.6 0 003.633 1.084c3.642 0 6.604-2.94 6.604-6.553s-2.962-6.553-6.604-6.553zm3.967 8.348c-.049-.08-.177-.128-.37-.223-.192-.095-1.139-.558-1.315-.621-.177-.064-.305-.096-.434.095a10.92 10.92 0 01-.61.749c-.112.128-.224.143-.416.048-.193-.096-.813-.297-1.549-.948a5.76 5.76 0 01-1.07-1.323c-.113-.191-.013-.295.084-.39.086-.086.192-.223.289-.334.096-.112.128-.191.192-.319s.032-.239-.016-.335c-.048-.095-.433-1.035-.594-1.418-.16-.382-.32-.318-.433-.318-.112 0-.24-.016-.369-.016a.71.71 0 00-.513.239c-.177.19-.674.653-.674 1.593s.69 1.848.786 1.976c.096.127 1.332 2.119 3.289 2.884 1.958.764 1.958.51 2.31.477.353-.031 1.14-.461 1.3-.908.16-.446.16-.829.113-.908z' fill='%23000' fill-rule='evenodd'/%3e%3c/svg%3e");
 }
+
+
+
+
+/* Rating */
+
+.red-rating{
+	font-family:  Arial, "HelveticaNeue-Light", Helvetica, sans-serif;
+	font-size: 1rem;
+	box-sizing: border-box;
+	padding: 20px 30px;
+	background: #f5f5f5;
+	min-width: 450px;
+	color : #333;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	border-radius: 5px;
+}
+
+.red-rating-info{
+	display: flex;
+	flex-direction: column;
+}
+
+.red-rating-info div.rating-overall{
+	display: flex;
+	flex-direction: row;
+	font-weight: bold;
+	font-size: 1.15rem;
+}
+
+.red-rating-info big{
+	font-size: 1.7rem;
+}
+
+.red-rating-info .star{
+	display: inline-block;
+	width: 27px;
+	height: 27px;
+	margin-left: 2px;
+	margin-top: 4px;
+	background-image: url(images/star-1.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+
+.red-rating-info div.rating-stat{
+	font-size: 0.85rem;
+	padding: 5px 0 6px 0;
+	color: #6A6A6A;
+}
+
+
+
+.red-rating-grade{
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: flex-end;
+	flex-direction: row;
+	flex-grow: 1;
+	padding-left: 15px;
+	font-weight: bold;
+}
+
+.red-rating-title{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-content: center;
+	padding-right: 5px;
+}
+
+.red-rating-stars{
+	display: flex;
+	flex-direction: row;
+}
+
+
+/*
+
+	.red-rating-stars .star-inactive{
+		width: 30px;
+		height: 30px;
+		background-image: url(images/star-0.png);
+		background-repeat: no-repeat;
+		background-size: contain;
+		cursor: pointer;
+	}
+
+
+	.red-rating-stars .star-active{
+		width: 30px;
+		height: 30px;
+		background-image: url(images/star-1.png);
+		background-repeat: no-repeat;
+		background-size: contain;
+		cursor: pointer;
+	}
+
+	.red-rating-stars .star-active:hover, .red-rating-stars .star-inactive:hover{
+		background-image: url(images/star-1.png);
+		opacity: 0.7;
+	}
+*/
+
+
+/*shows the stars side by side, centered, and in reverse order than the HMTL*/
+.red-rating-stars {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: center;
+}
+
+/*hides the radio buttons*/
+.red-rating-stars > input{ display:none;}
+
+/*style the empty stars, sets position:relative as base for pseudo-elements*/
+.red-rating-stars > label {
+	position: relative;
+	/*   width: 40px; */
+	font-size: 1.5rem;
+	margin-left: 5px;
+	color: #FFBE4A;
+	cursor: pointer;
+}
+
+/* sets filled star pseudo-elements */
+.red-rating-stars > label::before{
+	content: "\2605";
+	position: absolute;
+	color: #D7D7D7;
+	/*   opacity: 0; */
+}
+/*overlays a filled start character to the hovered element and all previous siblings*/
+.red-rating-stars > label:hover:before,
+.red-rating-stars > label:hover ~ label:before {
+	opacity: 1 !important;
+	color: #FFBE4A;
+}
+
+/*overlays a filled start character on the selected element and all previous siblings*/
+.red-rating-stars > input:checked ~ label:before{
+	opacity:1;
+	color: #FFBE4A;
+}
+
+/*when an element is selected and pointer re-enters the rating container, selected rate and siblings get semi transparent, as reminder of current selection*/
+.red-rating-stars:hover > input:checked ~ label:before{ opacity: 0.4; }
+
+
+
+
+
+
+
+
+
+

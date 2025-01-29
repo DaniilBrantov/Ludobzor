@@ -64,7 +64,15 @@
                                                 </picture>
                                                 <div class="badge bg-default"></div>
                                             </a>
-                                            <div class="buttons">
+                                            <?php
+                                            if($args_data['post_type'] == 'free_games'){
+                                            ?>
+                                            <a href="<?php echo esc_url($post_link); ?>" class="img img-offset">
+                                                <div class="bottom-info"><h4>Starda Queen</h4></div>
+                                            </a>
+                                            <?php
+                                            }else{ ?>
+                                                <div class="buttons">
                                                 <a href="<?php echo esc_url($post_link); ?>" class="button"><span>Обзор</span></a>
                                                 <?php
                                                     $bonus = get_field('banner', $post_id) ?: '';
@@ -72,10 +80,17 @@
                                                 ?>
                                                 <a id="get_promo" class="button copy_promocode_link"
                                                     data-image-src="<?php echo esc_url($promo_photo); ?>"
-                                                    data-promo-code="<?php echo esc_html($promo_code); ?>">
+                                                    data-promo-code="
+                                                    <?php echo esc_html($promo_code ?: 'LUDOBZOR'); ?>
+                                                    ">
                                                     <span>Промокод</span>
                                                 </a>
                                             </div>
+                                            <?php
+                                            };
+                                            ?>
+                                            
+
                                         </div>
                                     </div>
                             <?php
